@@ -50,9 +50,18 @@ const activeTab = ref('all')
 const activeId   = ref(null)
 const activeIsShort = ref(false)
 
+function byDateDesc(a, b) {
+  if (!a.date && !b.date) return 0
+  if (!a.date) return 1
+  if (!b.date) return -1
+  return b.date.localeCompare(a.date)
+}
+
 const filtered = computed(() => {
-  if (activeTab.value === 'all') return videos
-  return videos.filter(v => v.cat === activeTab.value)
+  const list = activeTab.value === 'all'
+    ? videos
+    : videos.filter(v => v.cat === activeTab.value)
+  return [...list].sort(byDateDesc)
 })
 
 function countFor(catId) {
