@@ -26,16 +26,6 @@
           </div>
           <h3>{{ service.title }}</h3>
           <p>{{ service.desc }}</p>
-          <div class="service-tags">
-            <span v-for="tag in service.tags" :key="tag" class="service-tag">{{ tag }}</span>
-          </div>
-          <span class="service-arrow">
-            Porozmawiajmy
-            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <line x1="0" y1="5" x2="14" y2="5"/>
-              <polyline points="10 1 14 5 10 9"/>
-            </svg>
-          </span>
         </div>
       </div>
 
@@ -117,28 +107,24 @@ const services = [
     num: '01',
     title: 'Produkcje Eventowe & Reportaże',
     desc: 'Studniówki, koncerty, wydarzenia firmowe. Pełna obsługa kamerowa od przygotowania po finalny montaż.',
-    tags: ['Multikamera', 'Live event', 'Reportaż'],
     icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="22" height="16" rx="1"/><path d="M26 18 L36 13 L36 27 L26 22 Z"/><circle cx="10" cy="20" r="2"/></svg>`,
   },
   {
     num: '02',
     title: 'Filmy Ślubne & Teledyski',
     desc: 'Emocje ujęte w nowoczesną formę. Dbam o każdy detal — od kompozycji kadru po rytm w montażu.',
-    tags: ['Cinematic', 'Storytelling', 'Color'],
     icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 28 L14 14 a6 6 0 0 1 12 0 L26 28"/><path d="M10 28 L30 28"/><circle cx="20" cy="14" r="2.5"/><path d="M20 16.5 L20 22"/></svg>`,
   },
   {
     num: '03',
     title: 'Content Digitalowy',
     desc: 'Podcasty, nagrania muzyczne, formaty social media. Produkcja i postprodukcja dopasowana do platformy.',
-    tags: ['Podcast', 'Reels', 'Music video'],
     icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="6" width="10" height="18" rx="5"/><path d="M9 19 a11 11 0 0 0 22 0"/><path d="M20 30 L20 34"/><path d="M14 34 L26 34"/></svg>`,
   },
   {
     num: '04',
     title: 'Postprodukcja',
     desc: 'Profesjonalny montaż i color grading powierzonych materiałów. Pracuję w DaVinci Resolve Studio.',
-    tags: ['Edit', 'Color grading', 'DaVinci'],
     icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M20 7 a13 13 0 0 1 0 26"/><circle cx="20" cy="20" r="4" fill="currentColor" stroke="none"/></svg>`,
   },
 ]
@@ -235,7 +221,6 @@ h2 {
 .service-card:hover::after { opacity: 1; }
 .service-card:hover .service-icon { color: var(--accent); transform: translateY(-3px); }
 .service-card:hover h3 { color: var(--accent2); }
-.service-card:hover .service-arrow { transform: translateX(6px); opacity: 1; color: var(--accent); }
 
 .service-top {
   display: flex;
@@ -282,42 +267,6 @@ p {
   margin-bottom: 1.5rem;
 }
 
-.service-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-bottom: 1.4rem;
-}
-
-.service-tag {
-  font-family: var(--font-body);
-  font-size: 0.55rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 0.3rem 0.65rem;
-  border: 1px solid var(--border2);
-  transition: color 0.25s, border-color 0.25s;
-}
-
-.service-card:hover .service-tag {
-  color: var(--accent2);
-  border-color: rgba(201,75,40,0.35);
-}
-
-.service-arrow {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 0.65rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0.55;
-  transition: transform 0.4s, opacity 0.3s, color 0.3s;
-}
 
 /* Tools row */
 .tools-row {
