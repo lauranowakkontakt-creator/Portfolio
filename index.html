@@ -3,17 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laura Nowak | Montaż Wideo</title>
-    <meta name="description" content="Laura Nowak — montażystka wideo i operatorka kamery. DaVinci Resolve Studio." />
+    <title>Laura Nowak | Operatorka Kamery & Montażystka Wideo</title>
+    <meta name="description" content="Laura Nowak — operatorka kamery i montażystka wideo. Gliwice & Śląsk. DaVinci Resolve Studio." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <canvas id="ambient-canvas"></canvas>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <script>
+      (function () {
+        const canvas = document.getElementById('ambient-canvas')
+        const ctx = canvas.getContext('2d')
+
+        function resize() {
+          canvas.width = window.innerWidth
+          canvas.height = window.innerHeight
+        }
+        resize()
+        window.addEventListener('resize', resize)
+
+        const particles = Array.from({ length: 38 }, () => ({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          r: Math.random() * 1.5 + 0.3,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          opacity: Math.random() * 0.4 + 0.05,
+          pulse: Math.random() * Math.PI * 2,
+        }))
+
+        const glows = [
+          { x: 0.15, y: 0.2, r: 180, vx: 0.04, vy: 0.03, phase: 0 },
+          { x: 0.85, y: 0.7, r: 240, vx: -0.03, vy: 0.04, phase: 2.1 },
+          { x: 0.5,  y: 0.45, r: 300, vx: 0.02, vy: -0.03, phase: 4.2 },
+        ].map(g => ({ ...g, x: g.x * window.innerWidth, y: g.y * window.innerHeight }))
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height)
+          glows.forEach(g => {
+            g.x += g.vx; g.y += g.vy; g.phase += 0.003
+            if (g.x < -g.r) g.x = canvas.width + g.r
+            if (g.x > canvas.width + g.r) g.x = -g.r
+            if (g.y < -g.r) g.y = canvas.height + g.r
+            if (g.y > canvas.height + g.r) g.y = -g.r
+            const a = 0.025 + Math.sin(g.phase) * 0.01
+            const grad = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.r)
+            grad.addColorStop(0, `rgba(201,75,40,${a})`)
+            grad.addColorStop(1, 'rgba(201,75,40,0)')
+            ctx.fillStyle = grad
+            ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, Math.PI * 2); ctx.fill()
+          })
+          particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy; p.pulse += 0.012
+            if (p.x < 0) p.x = canvas.width
+            if (p.x > canvas.width) p.x = 0
+            if (p.y < 0) p.y = canvas.height
+            if (p.y > canvas.height) p.y = 0
+            const a = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse))
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+            ctx.fillStyle = `rgba(237,234,229,${a})`; ctx.fill()
+          })
+          requestAnimationFrame(draw)
+        }
+        draw()
+      })()
+    </script>
   </body>
 </html>

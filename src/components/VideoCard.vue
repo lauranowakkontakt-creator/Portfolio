@@ -1,32 +1,41 @@
 <template>
-  <button class="video-card" :class="{ short: video.short }" @click="$emit('open', video.id)" type="button">
-    <div class="v-fallback">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--accent)">
-        <path d="M8 5v14l11-7z" />
-      </svg>
-    </div>
+  <button
+    class="video-card"
+    :class="{ short: video.short, loaded: imgLoaded }"
+    @click="$emit('open', video.id)"
+    type="button"
+  >
+    <!-- Skeleton shimmer -->
+    <div class="v-skeleton"></div>
 
     <img
       v-show="!imgError"
       class="v-thumb"
-      :class="{ loaded: imgLoaded }"
+      :class="{ visible: imgLoaded }"
       :src="thumbUrl"
       :alt="`${video.title || 'Film'} — Laura Nowak`"
       @load="imgLoaded = true"
-      @error="imgError = true"
+      @error="onError"
     />
 
+    <!-- dark overlay on hover -->
+    <div class="v-overlay"></div>
+
+    <!-- bottom info bar -->
     <div class="v-bar" v-if="video.title || video.type">
       <p class="v-type" v-if="video.type">{{ video.type }}</p>
       <p class="v-title" v-if="video.title">{{ video.title }}</p>
     </div>
 
+    <!-- play button -->
     <div class="v-play">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
+      <div class="v-play-ring"></div>
+      <svg viewBox="0 0 24 24" :width="video.short ? 14 : 18" :height="video.short ? 14 : 18" fill="white">
         <path d="M8 5v14l11-7z" />
       </svg>
     </div>
 
+    <!-- top accent line -->
     <div class="v-accent-line"></div>
   </button>
 </template>
@@ -46,6 +55,10 @@ const imgError  = ref(false)
 const thumbUrl = computed(
   () => `https://i.ytimg.com/vi/${props.video.id}/hqdefault.jpg`
 )
+
+function onError() {
+  imgError.value = true
+}
 </script>
 
 <style scoped>
@@ -65,31 +78,32 @@ const thumbUrl = computed(
   aspect-ratio: 9 / 16;
 }
 
-.v-accent-line {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-  z-index: 3;
-}
-
-.video-card:hover .v-accent-line {
-  transform: scaleX(1);
-}
-
-.v-fallback {
+/* Skeleton shimmer */
+.v-skeleton {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  opacity: 0.5;
+  background: linear-gradient(90deg,
+    var(--surface) 0%,
+    #1e1e1e 50%,
+    var(--surface) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  z-index: 0;
+  transition: opacity 0.4s;
 }
 
+.video-card.loaded .v-skeleton {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Thumbnail */
 .v-thumb {
   position: absolute;
   inset: 0;
@@ -97,57 +111,93 @@ const thumbUrl = computed(
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.4s, transform 0.55s ease;
+  transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
 }
 
-.v-thumb.loaded {
-  opacity: 1;
-}
+.v-thumb.visible { opacity: 1; }
 
-.video-card:hover .v-thumb {
-  transform: scale(1.04);
-}
+.video-card:hover .v-thumb { transform: scale(1.05); }
 
-.v-bar {
+/* Dark overlay */
+.v-overlay {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-  padding: 1rem 0.85rem 0.7rem;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.25s;
   z-index: 2;
 }
 
+.video-card:hover .v-overlay {
+  background: rgba(0, 0, 0, 0.42);
+}
+
+/* Bottom info bar */
+.v-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  padding: 1.2rem 0.8rem 0.65rem;
+  z-index: 3;
+  transform: translateY(4px);
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.video-card:hover .v-bar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .v-type {
-  font-size: 0.55rem;
+  font-size: 0.52rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent2);
   margin-bottom: 0.15rem;
 }
 
 .v-title {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: #f0ede8;
   line-height: 1.3;
 }
 
+/* Play button */
 .v-play {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 4;
   opacity: 0;
-  transition: opacity 0.25s;
+  transform: scale(0.75);
+  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.v-play::before {
-  content: '';
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(217, 82, 45, 0.88);
+.video-card:hover .v-play {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.v-play-ring {
   position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 24px rgba(201, 75, 40, 0.6);
+  transition: box-shadow 0.2s;
+}
+
+.video-card.short .v-play-ring {
+  width: 32px;
+  height: 32px;
+}
+
+.video-card:hover .v-play-ring {
+  box-shadow: 0 0 36px rgba(201, 75, 40, 0.8);
 }
 
 .v-play svg {
@@ -156,7 +206,19 @@ const thumbUrl = computed(
   margin-left: 2px;
 }
 
-.video-card:hover .v-play {
-  opacity: 1;
+/* Top accent line */
+.v-accent-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 5;
+}
+
+.video-card:hover .v-accent-line {
+  transform: scaleX(1);
 }
 </style>

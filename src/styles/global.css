@@ -5,20 +5,20 @@
 }
 
 :root {
-  --bg:      #0D0D0D;
-  --surface: #161616;
-  --text:    #F2F0ED;
-  --muted:   #6A6560;
-  --accent:  #D9522D;
-  --border:  rgba(242, 240, 237, 0.08);
+  --bg:      #080808;
+  --surface: #101010;
+  --text:    #EDEAE5;
+  --muted:   #7A7470;
+  --accent:  #C94B28;
+  --accent2: #E05E38;
+  --border:  rgba(237,234,229,0.07);
+  --border2: rgba(237,234,229,0.13);
 
-  --font-display: 'Syne', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
@@ -27,3 +27,30 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+
+#ambient-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible        { opacity: 1; transform: translateY(0); }
+.reveal-delay-1        { transition-delay: 0.08s; }
+.reveal-delay-2        { transition-delay: 0.16s; }
+.reveal-delay-3        { transition-delay: 0.24s; }
+.reveal-delay-4        { transition-delay: 0.32s; }
+.reveal-delay-5        { transition-delay: 0.40s; }
