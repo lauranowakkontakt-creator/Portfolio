@@ -22,8 +22,8 @@
     <div class="v-overlay"></div>
 
     <!-- bottom info bar -->
-    <div class="v-bar" v-if="video.title || video.type">
-      <p class="v-type" v-if="video.type">{{ video.type }}</p>
+    <div class="v-bar">
+      <p class="v-type">{{ video.type || (video.cat ? video.cat.toUpperCase() : 'FILM') }}</p>
       <p class="v-title" v-if="video.title">{{ video.title }}</p>
     </div>
 
@@ -117,7 +117,7 @@ function onError() {
 
 .v-thumb.visible { opacity: 1; }
 
-.video-card:hover .v-thumb { transform: scale(1.05); }
+.video-card:hover .v-thumb { transform: scale(1.07); filter: contrast(1.08) saturate(1.1); }
 
 /* Dark overlay */
 .v-overlay {
@@ -136,31 +136,44 @@ function onError() {
 .v-bar {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-  padding: 1.2rem 0.8rem 0.65rem;
+  background: linear-gradient(to top, rgba(8,8,8,0.96) 0%, rgba(8,8,8,0.4) 70%, transparent 100%);
+  padding: 2rem 1rem 0.85rem;
   z-index: 3;
-  transform: translateY(4px);
-  opacity: 0;
-  transition: opacity 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0.85;
+  transition: opacity 0.3s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .video-card:hover .v-bar {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .v-type {
-  font-size: 0.52rem;
-  letter-spacing: 0.2em;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--accent2);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.v-type::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: var(--accent2);
+  opacity: 0.7;
 }
 
 .v-title {
-  font-size: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   color: #f0ede8;
-  line-height: 1.3;
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Play button */

@@ -40,6 +40,7 @@
     </div>
 
     <div class="hero-right">
+      <span class="corners"><span></span></span>
       <img
         :src="photoUrl"
         alt="Laura Nowak z kamerą na planie"
@@ -63,8 +64,8 @@ const imgLoaded = ref(false)
 const photoUrl = import.meta.env.BASE_URL + 'photo.jpg'
 
 const stats = [
-  { num: '7', label: 'lat za kamerą' },
-  { num: '6', label: 'lat w montażu' },
+  { num: '7',    label: 'lat za kamerą' },
+  { num: '6',    label: 'lat w montażu' },
   { num: '200+', label: 'domkniętych projektów' },
 ]
 </script>
@@ -72,10 +73,13 @@ const stats = [
 <style scoped>
 .hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: 92vh;
   position: relative;
   overflow: hidden;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 5rem 3rem 3rem;
 }
 
 /* ── LEFT ── */
@@ -83,7 +87,6 @@ const stats = [
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5.5rem 3.5rem 2.5rem 3rem;
   position: relative;
   z-index: 2;
 }
@@ -148,6 +151,8 @@ h1 {
 }
 
 .btn-primary {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -161,10 +166,24 @@ h1 {
   transition: background 0.2s, transform 0.2s;
 }
 
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  transform: translateX(-110%);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .btn-primary:hover {
   background: var(--accent2);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -8px rgba(201,75,40,0.5);
 }
+
+.btn-primary:hover::before { transform: translateX(110%); }
+
+.btn-primary > * { position: relative; z-index: 1; }
 
 .btn-ghost {
   color: rgba(237,234,229,0.5);
@@ -232,35 +251,84 @@ h1 {
 .hero-right {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 78vh;
+  align-self: center;
+  justify-self: end;
+  width: 100%;
+  max-width: 460px;
+  border: 1px solid var(--border2);
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6),
+              0 0 0 1px rgba(201,75,40,0.08);
+}
+
+.hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 60%, rgba(201,75,40,0.08) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* REC indicator */
+.hero-right::after {
+  content: 'REC ●';
+  position: absolute;
+  top: 14px; left: 14px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  z-index: 3;
+  animation: recPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes recPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
 }
 
 .hero-right img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% 15%;
+  object-position: 55% 20%;
   display: block;
-  filter: grayscale(12%) brightness(0.85);
-  transform: scale(1.04);
-  transition: transform 8s ease-out;
+  filter: grayscale(15%) brightness(0.88) contrast(1.05);
+  transform: scale(1.08);
+  transition: transform 12s ease-out, filter 0.6s;
 }
 
 .hero-right img.loaded { transform: scale(1); }
 
-.hero-right::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, var(--bg) 0%, transparent 40%);
-  z-index: 1;
+.hero-right:hover img {
+  filter: grayscale(0%) brightness(1) contrast(1.1);
+  transform: scale(1.03);
 }
 
-.hero-right::after {
+/* Corner crop marks */
+.hero-right .corners::before,
+.hero-right .corners::after,
+.hero-right .corners > span::before,
+.hero-right .corners > span::after {
   content: '';
   position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent);
+  border-style: solid;
+  z-index: 3;
+}
+
+.hero-right .corners::before  { top: 8px;    left: 8px;  border-width: 1.5px 0 0 1.5px; }
+.hero-right .corners::after   { top: 8px;    right: 8px; border-width: 1.5px 1.5px 0 0; }
+.hero-right .corners > span::before { bottom: 8px; left: 8px;  border-width: 0 0 1.5px 1.5px; }
+.hero-right .corners > span::after  { bottom: 8px; right: 8px; border-width: 0 1.5px 1.5px 0; }
+
+.hero-right .corners > span {
+  position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 25%);
-  z-index: 1;
 }
 
 /* ── Scroll hint ── */
@@ -293,13 +361,18 @@ h1 {
 
 /* ── Responsive ── */
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-right { height: 65vw; order: -1; }
-  .hero-right::before {
-    background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 4rem 1.5rem 2.5rem;
+    gap: 2rem;
   }
-  .hero-right::after { display: none; }
-  .hero-left { padding: 2.5rem 1.5rem 3rem; }
+  .hero-right {
+    order: -1;
+    max-width: 320px;
+    aspect-ratio: 4 / 5;
+    max-height: 60vh;
+    justify-self: center;
+  }
   .scroll-hint { display: none; }
 }
 

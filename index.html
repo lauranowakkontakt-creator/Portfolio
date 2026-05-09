@@ -14,6 +14,9 @@
   </head>
   <body>
     <canvas id="ambient-canvas"></canvas>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+    <div id="film-grain"></div>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
     <script>
@@ -28,37 +31,52 @@
         resize()
         window.addEventListener('resize', resize)
 
-        const particles = Array.from({ length: 38 }, () => ({
+        const particles = Array.from({ length: 65 }, () => ({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
-          r: Math.random() * 1.5 + 0.3,
-          vx: (Math.random() - 0.5) * 0.18,
-          vy: (Math.random() - 0.5) * 0.18,
-          opacity: Math.random() * 0.4 + 0.05,
+          r: Math.random() * 1.6 + 0.3,
+          vx: (Math.random() - 0.5) * 0.22,
+          vy: (Math.random() - 0.5) * 0.22,
+          opacity: Math.random() * 0.45 + 0.05,
           pulse: Math.random() * Math.PI * 2,
         }))
 
         const glows = [
-          { x: 0.15, y: 0.2, r: 180, vx: 0.04, vy: 0.03, phase: 0 },
-          { x: 0.85, y: 0.7, r: 240, vx: -0.03, vy: 0.04, phase: 2.1 },
-          { x: 0.5,  y: 0.45, r: 300, vx: 0.02, vy: -0.03, phase: 4.2 },
+          { x: 0.10, y: 0.20, r: 280, vx: 0.06,  vy: 0.04,  phase: 0,   color: '201,75,40' },
+          { x: 0.85, y: 0.70, r: 360, vx: -0.05, vy: 0.05,  phase: 2.1, color: '224,94,56' },
+          { x: 0.50, y: 0.45, r: 420, vx: 0.03,  vy: -0.04, phase: 4.2, color: '201,75,40' },
+          { x: 0.30, y: 0.85, r: 240, vx: -0.04, vy: -0.03, phase: 1.0, color: '60,90,120' },
+          { x: 0.75, y: 0.15, r: 200, vx: 0.05,  vy: 0.02,  phase: 3.4, color: '224,94,56' },
         ].map(g => ({ ...g, x: g.x * window.innerWidth, y: g.y * window.innerHeight }))
+
+        let sweep = -200
 
         function draw() {
           ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+          sweep += 0.6
+          if (sweep > canvas.width + 300) sweep = -300
+          const flare = ctx.createLinearGradient(sweep - 80, 0, sweep + 80, 0)
+          flare.addColorStop(0, 'rgba(201,75,40,0)')
+          flare.addColorStop(0.5, 'rgba(224,94,56,0.05)')
+          flare.addColorStop(1, 'rgba(201,75,40,0)')
+          ctx.fillStyle = flare
+          ctx.fillRect(sweep - 80, 0, 160, canvas.height)
+
           glows.forEach(g => {
             g.x += g.vx; g.y += g.vy; g.phase += 0.003
             if (g.x < -g.r) g.x = canvas.width + g.r
             if (g.x > canvas.width + g.r) g.x = -g.r
             if (g.y < -g.r) g.y = canvas.height + g.r
             if (g.y > canvas.height + g.r) g.y = -g.r
-            const a = 0.025 + Math.sin(g.phase) * 0.01
+            const a = 0.04 + Math.sin(g.phase) * 0.018
             const grad = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.r)
-            grad.addColorStop(0, `rgba(201,75,40,${a})`)
-            grad.addColorStop(1, 'rgba(201,75,40,0)')
+            grad.addColorStop(0, `rgba(${g.color},${a})`)
+            grad.addColorStop(1, `rgba(${g.color},0)`)
             ctx.fillStyle = grad
             ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, Math.PI * 2); ctx.fill()
           })
+
           particles.forEach(p => {
             p.x += p.vx; p.y += p.vy; p.pulse += 0.012
             if (p.x < 0) p.x = canvas.width
@@ -69,6 +87,7 @@
             ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
             ctx.fillStyle = `rgba(237,234,229,${a})`; ctx.fill()
           })
+
           requestAnimationFrame(draw)
         }
         draw()
