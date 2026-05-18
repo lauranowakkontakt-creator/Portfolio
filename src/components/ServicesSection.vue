@@ -158,10 +158,8 @@
 
 .services-head {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
   margin-bottom: 2.5rem;
 }
 

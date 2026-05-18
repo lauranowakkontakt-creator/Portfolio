@@ -6,7 +6,6 @@
       <p class="contact-desc reveal reveal-delay-2">
         Szukasz operatorki lub montażystki do projektu,
         albo interesuje Cię stała współpraca w produkcji czy postprodukcji?
-        Napisz — odpowiadam w ciągu 24h.
       </p>
       <a href="mailto:laura.nowak.kontakt@gmail.com" class="contact-email reveal reveal-delay-3">
         laura.nowak.kontakt@gmail.com

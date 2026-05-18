@@ -41,43 +41,12 @@
           </div>
         </div>
 
-        <div class="about-right">
-          <div class="pillars-list">
-            <div
-              v-for="(pillar, i) in pillars"
-              :key="pillar.title"
-              class="pillar reveal"
-              :class="`reveal-delay-${i + 1}`"
-            >
-              <span class="pillar-num">0{{ i + 1 }}</span>
-              <div class="pillar-body">
-                <p class="pillar-title">{{ pillar.title }}</p>
-                <p class="pillar-text">{{ pillar.text }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const pillars = [
-  {
-    title: 'Atmosfera i komunikacja',
-    text: 'Po prostu lubię ludzi. Dbam o to, żeby każdy przed kamerą czuł się swobodnie, bo brak spiny od razu widać w naturalnych ujęciach. W zespole cenię czyste zasady i terminowość.',
-  },
-  {
-    title: 'DaVinci Resolve Studio',
-    text: 'To moje główne środowisko pracy od lat. Montaż, dźwięk i color grading robię w jednym miejscu, więc traktuję kolor bardzo poważnie. Narzędzia AI wdrażam na bieżąco, ale tylko jako asystenta do nudnych, technicznych zadań.',
-  },
-  {
-    title: 'Elastyczne podejście',
-    text: 'Nie pracuję z gotowymi szablonami. Dynamiczny teledysk, kilkudniowy festiwal czy podcast wymagają zupełnie innego języka wizualnego. Jeśli Twój projekt potrzebuje stylu, którego nie ma w moim portfolio — chętnie wejdę w coś nowego.',
-  },
-]
 </script>
 
 <style scoped>
@@ -108,9 +77,8 @@ const pillars = [
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  grid-template-columns: 1fr;
+  max-width: 720px;
 }
 
 .section-label {
@@ -208,76 +176,8 @@ h2::after {
   color: var(--muted);
 }
 
-/* Pillars */
-.pillars-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--border);
-}
-
-.pillar {
-  background: var(--surface);
-  padding: 1.6rem 1.6rem 1.6rem 1.8rem;
-  position: relative;
-  transition: background 0.4s, padding-left 0.4s;
-  cursor: default;
-  display: grid;
-  grid-template-columns: 36px 1fr;
-  gap: 1rem;
-  align-items: start;
-}
-
-.pillar::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 2px;
-  background: var(--accent);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.pillar:hover { background: var(--bg); padding-left: 2.1rem; }
-.pillar:hover::before { transform: scaleY(1); }
-.pillar:hover .pillar-num { color: var(--accent2); }
-.pillar:hover .pillar-title { color: var(--accent); }
-
-.pillar-num {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  line-height: 1;
-  padding-top: 4px;
-  transition: color 0.3s;
-}
-
-.pillar-body { min-width: 0; }
-
-.pillar-title {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 0.55rem;
-  line-height: 1.2;
-  transition: color 0.3s;
-}
-
-.pillar-text {
-  font-size: 0.82rem;
-  color: var(--muted);
-  line-height: 1.75;
-  font-weight: 300;
-}
-
 @media (max-width: 1024px) {
   .about { padding-left: 2.5rem; padding-right: 2.5rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
 }
 
 @media (max-width: 700px) {
@@ -289,7 +189,5 @@ h2::after {
     padding: 1rem 0 !important;
   }
   .stat-cell:last-child { border-bottom: none; }
-  .pillar { grid-template-columns: 30px 1fr; padding: 1.3rem 1.2rem; }
-  .pillar:hover { padding-left: 1.5rem; }
 }
 </style>
