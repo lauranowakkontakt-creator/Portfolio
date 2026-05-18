@@ -40,13 +40,16 @@
     </div>
 
     <div class="hero-right">
-      <span class="corners"><span></span></span>
-      <img
-        :src="photoUrl"
-        alt="Laura Nowak z kamerą na planie"
-        @load="imgLoaded = true"
-        :class="{ loaded: imgLoaded }"
-      />
+      <div class="hero-photo-frame">
+        <img
+          :src="photoUrl"
+          alt="Laura Nowak z kamerą na planie"
+          @load="imgLoaded = true"
+        />
+        <span class="corners"><span></span></span>
+        <div class="hero-rec">REC</div>
+      </div>
+      <div class="hero-timecode"><span class="tc-dot"></span>00:07:42</div>
     </div>
 
     <div class="scroll-hint">
@@ -250,68 +253,117 @@ h1 {
 /* ── RIGHT (photo) ── */
 .hero-right {
   position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  max-height: 78vh;
   align-self: center;
   justify-self: end;
   width: 100%;
-  max-width: 460px;
-  border: 1px solid var(--border2);
-  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6),
-              0 0 0 1px rgba(201,75,40,0.08);
+  max-width: 440px;
+  aspect-ratio: 3 / 4;
 }
 
+/* decorative offset frame behind photo */
 .hero-right::before {
   content: '';
   position: absolute;
+  top: 16px; left: 16px; right: -16px; bottom: -16px;
+  border: 1px solid var(--accent);
+  opacity: 0.4;
+  z-index: -1;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+}
+
+.hero-right:hover::before { transform: translate(6px, 6px); opacity: 0.7; }
+
+.hero-photo-frame {
+  position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 60%, rgba(201,75,40,0.08) 100%);
-  z-index: 2;
+  overflow: hidden;
+  border: 1px solid var(--border2);
+  box-shadow: 0 40px 90px -25px rgba(0,0,0,0.7),
+              0 0 0 1px rgba(201,75,40,0.06),
+              inset 0 0 120px rgba(0,0,0,0.4);
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  display: block;
+  filter: grayscale(20%) brightness(0.92) contrast(1.08);
+  transition: filter 0.6s ease;
+}
+
+.hero-right:hover .hero-photo-frame img {
+  filter: grayscale(0%) brightness(1) contrast(1.1);
+}
+
+/* duotone film overlay */
+.hero-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(201,75,40,0.06) 0%, transparent 30%, transparent 70%, rgba(8,8,8,0.4) 100%);
   pointer-events: none;
 }
 
 /* REC indicator */
-.hero-right::after {
-  content: 'REC ●';
+.hero-rec {
   position: absolute;
   top: 14px; left: 14px;
+  z-index: 4;
   font-family: var(--font-display);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   color: var(--accent);
-  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-rec::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(201,75,40,0.9);
   animation: recPulse 1.6s ease-in-out infinite;
 }
 
 @keyframes recPulse {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.35; }
+  50%       { opacity: 0.3; }
 }
 
-.hero-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 55% 20%;
-  display: block;
-  filter: grayscale(15%) brightness(0.88) contrast(1.05);
-  transform: scale(1.08);
-  transition: transform 12s ease-out, filter 0.6s;
+/* timecode chip */
+.hero-timecode {
+  position: absolute;
+  bottom: -10px; right: -10px;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  padding: 0.55rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--accent2);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
-.hero-right img.loaded { transform: scale(1); }
-
-.hero-right:hover img {
-  filter: grayscale(0%) brightness(1) contrast(1.1);
-  transform: scale(1.03);
+.tc-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(201,75,40,0.9);
+  animation: recPulse 1.6s ease-in-out infinite;
 }
 
 /* Corner crop marks */
-.hero-right .corners::before,
-.hero-right .corners::after,
-.hero-right .corners > span::before,
-.hero-right .corners > span::after {
+.hero-photo-frame .corners::before,
+.hero-photo-frame .corners::after,
+.hero-photo-frame .corners > span::before,
+.hero-photo-frame .corners > span::after {
   content: '';
   position: absolute;
   width: 14px;
@@ -321,12 +373,12 @@ h1 {
   z-index: 3;
 }
 
-.hero-right .corners::before  { top: 8px;    left: 8px;  border-width: 1.5px 0 0 1.5px; }
-.hero-right .corners::after   { top: 8px;    right: 8px; border-width: 1.5px 1.5px 0 0; }
-.hero-right .corners > span::before { bottom: 8px; left: 8px;  border-width: 0 0 1.5px 1.5px; }
-.hero-right .corners > span::after  { bottom: 8px; right: 8px; border-width: 0 1.5px 1.5px 0; }
+.hero-photo-frame .corners::before  { top: 8px;    left: 8px;  border-width: 1.5px 0 0 1.5px; }
+.hero-photo-frame .corners::after   { top: 8px;    right: 8px; border-width: 1.5px 1.5px 0 0; }
+.hero-photo-frame .corners > span::before { bottom: 8px; left: 8px;  border-width: 0 0 1.5px 1.5px; }
+.hero-photo-frame .corners > span::after  { bottom: 8px; right: 8px; border-width: 0 1.5px 1.5px 0; }
 
-.hero-right .corners > span {
+.hero-photo-frame .corners > span {
   position: absolute;
   inset: 0;
 }
@@ -368,9 +420,8 @@ h1 {
   }
   .hero-right {
     order: -1;
-    max-width: 320px;
-    aspect-ratio: 4 / 5;
-    max-height: 60vh;
+    max-width: 300px;
+    aspect-ratio: 3 / 4;
     justify-self: center;
   }
   .scroll-hint { display: none; }

@@ -143,15 +143,6 @@ h2::after {
   font-weight: 300;
 }
 
-.lead::first-letter {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  float: left;
-  line-height: 0.85;
-  color: var(--accent);
-  margin: 4px 12px 0 0;
-  letter-spacing: 0.02em;
-}
 
 .about-stats {
   display: grid;
