@@ -27,16 +27,16 @@
           </p>
           <div class="about-stats reveal reveal-delay-3">
             <div class="stat-cell">
-              <span class="stat-num">200<sup>+</sup></span>
-              <span class="stat-lbl">Projektów</span>
+              <span class="stat-num">6</span>
+              <span class="stat-lbl">Lat w montażu</span>
             </div>
             <div class="stat-cell">
               <span class="stat-num">7</span>
               <span class="stat-lbl">Lat w kadrze</span>
             </div>
             <div class="stat-cell">
-              <span class="stat-num">6</span>
-              <span class="stat-lbl">Lat w montażu</span>
+              <span class="stat-num">200<sup>+</sup></span>
+              <span class="stat-lbl">Projektów</span>
             </div>
             <div class="stat-cell">
               <span class="stat-num">250<sup>+</sup></span>
