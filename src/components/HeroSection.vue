@@ -12,12 +12,13 @@
         <span class="outline-word">NOWAK</span>
       </h1>
 
-      <p class="hero-tagline reveal reveal-delay-1">Kamera, montaż, historia.</p>
+      <p class="hero-tagline reveal reveal-delay-1">Kamera, montaż, ludzie.</p>
 
       <p class="hero-desc reveal reveal-delay-2">
-        Kamerą zajmuję się od 7 lat, montażem od 6. W tym czasie zrobiłam
-        ponad 200 projektów — wesela, studniówki, teledyski, podcasty.
-        Lubię, kiedy film coś mówi, nie tylko dobrze wygląda.
+        Byłam po obu stronach tej pracy — wiem, jak wygląda plan
+        i wiem, jak wygląda montaż o drugiej w nocy. To sprawia, że kiedy
+        nagrywam, już myślę o tym, co z tego będzie. A kiedy montuję —
+        pamiętam, co czułam za kamerą.
       </p>
 
       <div class="hero-actions reveal reveal-delay-3">
@@ -28,11 +29,11 @@
         <a href="#contact" class="btn-ghost">Napisz do mnie</a>
       </div>
 
-      <div class="hero-stats reveal reveal-delay-4">
+      <div class="hero-stats reveal reveal-delay-4" ref="statsRef">
         <div v-for="(s, i) in stats" :key="s.label" class="stat-item">
           <div v-if="i > 0" class="stat-sep"></div>
           <div class="stat">
-            <span class="stat-num">{{ s.num }}</span>
+            <span class="stat-num">{{ displayNums[i] }}{{ s.suffix }}</span>
             <span class="stat-label">{{ s.label }}</span>
           </div>
         </div>
@@ -49,7 +50,7 @@
         <span class="corners"><span></span></span>
         <div class="hero-rec">REC</div>
       </div>
-      <div class="hero-timecode"><span class="tc-dot"></span>00:07:42</div>
+      <div class="hero-timecode"><span class="tc-dot"></span>00:21:37</div>
     </div>
 
     <div class="scroll-hint">
@@ -61,16 +62,55 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const imgLoaded = ref(false)
 const photoUrl = import.meta.env.BASE_URL + 'photo.jpg'
+const statsRef = ref(null)
 
 const stats = [
-  { num: '7',    label: 'lat za kamerą' },
-  { num: '6',    label: 'lat w montażu' },
-  { num: '200+', label: 'domkniętych projektów' },
+  { num: 6,   suffix: '',   label: 'lat za kamerą' },
+  { num: 5,   suffix: '',   label: 'lat w montażu' },
+  { num: 200, suffix: '+',  label: 'zrealizowanych projektów' },
+  { num: 250, suffix: '+',  label: 'realizacji live' },
 ]
+
+const displayNums = ref(stats.map(() => 0))
+
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3)
+}
+
+function animateCounters() {
+  const duration = 1800
+  const startTime = performance.now()
+
+  function tick(now) {
+    const elapsed = now - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const eased = easeOutCubic(progress)
+
+    displayNums.value = stats.map(s => Math.round(s.num * eased))
+
+    if (progress < 1) requestAnimationFrame(tick)
+    else displayNums.value = stats.map(s => s.num)
+  }
+
+  requestAnimationFrame(tick)
+}
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        animateCounters()
+        observer.disconnect()
+      }
+    },
+    { threshold: 0.3 }
+  )
+  if (statsRef.value) observer.observe(statsRef.value)
+})
 </script>
 
 <style scoped>
@@ -185,7 +225,6 @@ h1 {
 }
 
 .btn-primary:hover::before { transform: translateX(110%); }
-
 .btn-primary > * { position: relative; z-index: 1; }
 
 .btn-ghost {
@@ -260,7 +299,6 @@ h1 {
   aspect-ratio: 3 / 4;
 }
 
-/* decorative offset frame behind photo */
 .hero-right::before {
   content: '';
   position: absolute;
@@ -297,7 +335,6 @@ h1 {
   filter: grayscale(0%) brightness(1) contrast(1.1);
 }
 
-/* duotone film overlay */
 .hero-photo-frame::after {
   content: '';
   position: absolute;
@@ -306,7 +343,6 @@ h1 {
   pointer-events: none;
 }
 
-/* REC indicator */
 .hero-rec {
   position: absolute;
   top: 14px; left: 14px;
@@ -334,7 +370,6 @@ h1 {
   50%       { opacity: 0.3; }
 }
 
-/* timecode chip */
 .hero-timecode {
   position: absolute;
   bottom: -10px; right: -10px;
@@ -359,7 +394,6 @@ h1 {
   animation: recPulse 1.6s ease-in-out infinite;
 }
 
-/* Corner crop marks */
 .hero-photo-frame .corners::before,
 .hero-photo-frame .corners::after,
 .hero-photo-frame .corners > span::before,
@@ -411,7 +445,6 @@ h1 {
   50% { opacity: 1; transform: scaleY(0.7); }
 }
 
-/* ── Responsive ── */
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;

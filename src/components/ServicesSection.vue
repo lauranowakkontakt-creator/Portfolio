@@ -4,29 +4,21 @@
 
       <div class="services-head reveal">
         <div>
-          <p class="section-label">Usługi</p>
-          <h2>Co robię?</h2>
+          <p class="section-label">Doświadczenie</p>
+          <h2>Co robiłam<br>do tej pory?</h2>
         </div>
-        <p class="services-tag">Przyjmuję zlecenia na każdym etapie — od pomysłu po gotowy plik.</p>
+        <p class="services-tag">Przez kilka lat przewinęłam się przez najróżniejsze plany zdjęciowe i formaty — od kameralnych rzeczy po duże eventy i koncerty.</p>
       </div>
 
-      <div class="services-grid">
-        <div
-          v-for="(service, i) in services"
-          :key="service.title"
-          class="service-card reveal"
-          :class="`reveal-delay-${i + 1}`"
-        >
-          <div class="service-top">
-            <span class="service-icon" v-html="service.icon"></span>
-            <span class="service-num">{{ service.num }}</span>
-          </div>
-          <h3>{{ service.title }}</h3>
-          <p>{{ service.desc }}</p>
-          <div class="service-tags">
-            <span v-for="tag in service.tags" :key="tag" class="service-tag">{{ tag }}</span>
-          </div>
-        </div>
+      <div class="exp-text reveal reveal-delay-1">
+        <p>Robienie filmów w tak różnych warunkach nauczyło mnie przede wszystkim elastyczności i szybkiego reagowania na to, co dzieje się wokół mnie. Moje dotychczasowe projekty dzielą się na kilka głównych obszarów:</p>
+        <ul class="exp-list">
+          <li>Teledyski i projekty muzyczne</li>
+          <li>Reportaże, eventy i studniówki</li>
+          <li>Filmy i teledyski ślubne</li>
+          <li>Podcasty i formaty mówione</li>
+          <li>Postprodukcja i color grading</li>
+        </ul>
       </div>
 
       <div class="tools-row reveal reveal-delay-3">
@@ -107,21 +99,6 @@
           <div class="tool-chip">
             <span class="tool-icon">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="6" y="6" width="18" height="18" rx="1"/>
-                <path d="M6 11 L24 11 M6 16 L24 16 M6 21 L24 21"/>
-                <circle cx="10" cy="8.5" r="1" fill="currentColor" stroke="none"/>
-                <circle cx="15" cy="13.5" r="1" fill="currentColor" stroke="none"/>
-                <circle cx="20" cy="18.5" r="1" fill="currentColor" stroke="none"/>
-              </svg>
-            </span>
-            <span class="tool-info">
-              <span class="tool-cat">Światło RGB</span>
-              <span class="tool-device">Nanlite Litolite 5C RGB</span>
-            </span>
-          </div>
-          <div class="tool-chip">
-            <span class="tool-icon">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="2" width="5" height="26" rx="2.5"/>
                 <rect x="16" y="2" width="5" height="26" rx="2.5"/>
                 <path d="M11.5 6 L11.5 24 M18.5 6 L18.5 24" opacity="0.45"/>
@@ -145,6 +122,18 @@
               <span class="tool-device">DaVinci Resolve Studio</span>
             </span>
           </div>
+          <div class="tool-chip">
+            <span class="tool-icon">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 4 L20 12 L28 14 L22 20 L23 28 L15 24 L7 28 L8 20 L2 14 L10 12 Z"/>
+                <circle cx="15" cy="15" r="3" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span class="tool-info">
+              <span class="tool-cat">Workflow</span>
+              <span class="tool-device">AI Tools</span>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -153,36 +142,6 @@
 </template>
 
 <script setup>
-const services = [
-  {
-    num: '01',
-    title: 'Filmy ślubne & teledyski',
-    desc: 'Wesela to spora część mojej pracy. Kręcę zarówno pełne filmy jak i krótkie teledyski — zależy co para chce zapamiętać. Dbam o emocje, nie tylko o ładne kadry.',
-    tags: ['Film ślubny', 'Teledysk', 'Wesele'],
-    icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 28 L14 14 a6 6 0 0 1 12 0 L26 28"/><path d="M10 28 L30 28"/><circle cx="20" cy="14" r="2.5"/><path d="M20 16.5 L20 22"/></svg>`,
-  },
-  {
-    num: '02',
-    title: 'Studniówki & eventy',
-    desc: 'Studniówki, koncerty, eventy firmowe. Wiem jak poruszać się z kamerą w tłumie i jak wyłapać momenty zanim znikną. Obsługa jednoosobowa lub z ekipą — do uzgodnienia.',
-    tags: ['Studniówka', 'Event', 'Koncert'],
-    icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="22" height="16" rx="1"/><path d="M26 18 L36 13 L36 27 L26 22 Z"/><circle cx="10" cy="20" r="2"/></svg>`,
-  },
-  {
-    num: '03',
-    title: 'Muzyka, podcasty & social',
-    desc: 'Teledyski muzyczne, nagrania podcastów, treści na social media. Produkcja i montaż w jednym — od ustawienia sprzętu po finalny plik gotowy do wrzucenia.',
-    tags: ['Teledysk', 'Podcast', 'Reels'],
-    icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="6" width="10" height="18" rx="5"/><path d="M9 19 a11 11 0 0 0 22 0"/><path d="M20 30 L20 34"/><path d="M14 34 L26 34"/></svg>`,
-  },
-  {
-    num: '04',
-    title: 'Tylko montaż',
-    desc: 'Masz już nakręcony materiał? Mogę go zmontować i wygradować. Pracuję w DaVinci Resolve Studio, więc kolor traktuję poważnie. Przyjmuję materiały z różnych kamer.',
-    tags: ['Montaż', 'Color grading', 'DaVinci'],
-    icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M20 7 a13 13 0 0 1 0 26"/><circle cx="20" cy="20" r="4" fill="currentColor" stroke="none"/></svg>`,
-  },
-]
 </script>
 
 <style scoped>
@@ -223,125 +182,47 @@ h2 {
 }
 
 .services-tag {
-  max-width: 360px;
-  font-size: 0.82rem;
-  line-height: 1.7;
+  max-width: 420px;
+  font-size: 0.88rem;
+  line-height: 1.75;
   color: var(--muted);
   font-weight: 300;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+.exp-text {
+  max-width: 680px;
+  margin-bottom: 3rem;
 }
 
-.service-card {
-  padding: 2.4rem 2.2rem 2rem;
-  background: var(--bg);
-  transition: background 0.4s;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(to right, var(--accent), var(--accent2));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-card::after {
-  content: '';
-  position: absolute;
-  right: -60px; bottom: -60px;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,75,40,0.18) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.5s;
-  pointer-events: none;
-}
-
-.service-card:hover { background: var(--surface); }
-.service-card:hover::before { transform: scaleX(1); }
-.service-card:hover::after { opacity: 1; }
-.service-card:hover .service-icon { color: var(--accent); transform: translateY(-3px); }
-.service-card:hover h3 { color: var(--accent2); }
-
-.service-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.exp-text p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.85;
+  font-weight: 300;
   margin-bottom: 1.4rem;
 }
 
-.service-icon {
-  width: 38px;
-  height: 38px;
-  color: var(--text);
-  transition: color 0.35s, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-num {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  color: var(--muted);
-  letter-spacing: 0.24em;
-  line-height: 1;
-  padding: 0.35rem 0.7rem;
-  border: 1px solid var(--border2);
-}
-
-h3 {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  line-height: 1.15;
-  margin-bottom: 0.9rem;
-  transition: color 0.3s;
-}
-
-p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.75;
-  font-weight: 300;
-  flex-grow: 1;
-  margin-bottom: 1.5rem;
-}
-
-.service-tags {
+.exp-list {
+  list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-.service-tag {
-  font-family: var(--font-body);
-  font-size: 0.55rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 0.3rem 0.65rem;
-  border: 1px solid var(--border2);
-  transition: color 0.25s, border-color 0.25s;
+.exp-list li {
+  font-size: 0.88rem;
+  color: var(--text);
+  font-weight: 300;
+  padding-left: 1.4rem;
+  position: relative;
 }
 
-.service-card:hover .service-tag {
-  color: var(--accent2);
-  border-color: rgba(201,75,40,0.35);
+.exp-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-display);
 }
 
 /* Tools row */

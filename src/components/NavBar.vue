@@ -15,7 +15,7 @@
       </svg>
       <div class="logo-wordmark">
         <span class="wm-name">LAURA NOWAK</span>
-        <span class="wm-role">FILM · EDIT · DIRECT</span>
+        <span class="wm-role">FILM · EDIT</span>
       </div>
     </a>
     <ul class="nav-links">

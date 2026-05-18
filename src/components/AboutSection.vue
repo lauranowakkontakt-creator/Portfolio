@@ -5,12 +5,25 @@
 
         <div class="about-left">
           <p class="section-label reveal">O mnie</p>
-          <h2 class="reveal reveal-delay-1">7 lat z kamerą,<br>6 w montażowni.</h2>
+          <h2 class="reveal reveal-delay-1">O mnie.</h2>
           <p class="lead reveal reveal-delay-2">
-            Zaczęłam od kręcenia filmów na telefon — dziś mam za sobą setki godzin
-            na planach w różnych warunkach. Pracuję jako operatorka i montażystka,
-            ale jak trzeba to prowadzę cały projekt od briefu po eksport.
-            Kończę też studia psychologiczne, co — jak się okazuje — bardzo pomaga na planie.
+            Wszystko zaczęło się w czasie pandemii — gdy świat stanął w miejscu,
+            wiele rzeczy przeniosło się do sieci i właśnie wtedy po raz pierwszy
+            sięgnęłam po kamerę. Jakiś czas później pojawiła się potrzeba montażu
+            i tak oto jestem tutaj.
+          </p>
+          <p class="lead lead-second reveal reveal-delay-2">
+            Z natury jestem spokojna i cierpliwa, co bardzo pomaga mi w skupieniu
+            się na detalach. Towarzyszy mi też naturalna ciekawość świata — lubię
+            się uczyć i zagłębiać w tematy, które jeszcze są mi nieznane.
+            Śledzę nowinki branżowe i chętnie sięgam po nowe narzędzia, w tym
+            rozwiązania oparte na AI, które pozwalają mi pracować sprawniej.
+          </p>
+          <p class="lead lead-second reveal reveal-delay-2">
+            Studiuję psychologię — i nie jest to przypadek. Lubię ludzi,
+            interesują mnie ich historie i to, kim są. Najbardziej odpowiada mi
+            bycie blisko drugiego człowieka i towarzyszenie mu w tym,
+            z czym się mierzy.
           </p>
           <div class="about-stats reveal reveal-delay-3">
             <div class="stat-cell">
@@ -53,16 +66,16 @@
 <script setup>
 const pillars = [
   {
-    title: 'Psychologia na planie',
-    text: 'Studiuję psychologię i naprawdę zmienia to pracę z ludźmi. Szybciej się rozluźniają, ujęcia wychodzą naturalniej. Dobra atmosfera na planie słychać i widać w finalnym materiale.',
+    title: 'Atmosfera i komunikacja',
+    text: 'Po prostu lubię ludzi. Dbam o to, żeby każdy przed kamerą czuł się swobodnie, bo brak spiny od razu widać w naturalnych ujęciach. W zespole cenię czyste zasady i terminowość.',
   },
   {
     title: 'DaVinci Resolve Studio',
-    text: 'To moje główne narzędzie od kilku lat. Montaż, kolor, dźwięk — wszystko w jednym miejscu. Używam też narzędzi AI, ale tylko tam gdzie naprawdę przyspieszają pracę.',
+    text: 'To moje główne środowisko pracy od lat. Montaż, dźwięk i color grading robię w jednym miejscu, więc traktuję kolor bardzo poważnie. Narzędzia AI wdrażam na bieżąco, ale tylko jako asystenta do nudnych, technicznych zadań.',
   },
   {
-    title: 'Każdy projekt inaczej',
-    text: 'Kameralne wesele, energiczny teledysk, kilkudniowy event — za każdym razem podchodzę świeżo. Nie mam jednego szablonu, który przykładam do wszystkiego.',
+    title: 'Elastyczne podejście',
+    text: 'Nie pracuję z gotowymi szablonami. Dynamiczny teledysk, kilkudniowy festiwal czy podcast wymagają zupełnie innego języka wizualnego. Jeśli Twój projekt potrzebuje stylu, którego nie ma w moim portfolio — chętnie wejdę w coś nowego.',
   },
 ]
 </script>
@@ -139,8 +152,16 @@ h2::after {
   color: var(--muted);
   line-height: 1.85;
   max-width: 540px;
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.2rem;
   font-weight: 300;
+}
+
+.lead-second {
+  margin-bottom: 1.2rem;
+}
+
+.lead:last-of-type {
+  margin-bottom: 2.4rem;
 }
 
 

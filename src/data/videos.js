@@ -1,6 +1,6 @@
 export const categories = [
   { id: 'all',        label: 'Wszystkie' },
-  { id: 'wesele',     label: 'Filmy Ślubne' },
+  { id: 'wesele',     label: 'Filmy ślubne' },
   { id: 'muzyka',     label: 'Muzyka' },
   { id: 'podcast',    label: 'Podcast' },
   { id: 'studniowka', label: 'Studniówka' },

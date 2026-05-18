@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <span class="copy">© 2025 Laura Nowak &nbsp;·&nbsp; Montaż Wideo</span>
+    <span class="copy">© 2026 Laura Nowak &nbsp;·&nbsp; Montaż Wideo &amp; Operator Kamery</span>
     <span class="copy">DaVinci Resolve Studio</span>
   </footer>
 </template>

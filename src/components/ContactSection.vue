@@ -2,15 +2,16 @@
   <section class="contact" id="contact">
     <div class="contact-inner">
       <p class="section-label reveal">Kontakt</p>
-      <h2 class="reveal reveal-delay-1">POGADAJMY.</h2>
+      <h2 class="reveal reveal-delay-1">Pogadajmy.</h2>
       <p class="contact-desc reveal reveal-delay-2">
-        Masz projekt? Napisz kilka słów o tym co planujesz.
-        Odpiszę szybko i bez owijania w bawełnę.
+        Szukasz operatorki lub montażystki do projektu,
+        albo interesuje Cię stała współpraca w produkcji czy postprodukcji?
+        Napisz — odpowiadam w ciągu 24h.
       </p>
       <a href="mailto:laura.nowak.kontakt@gmail.com" class="contact-email reveal reveal-delay-3">
         laura.nowak.kontakt@gmail.com
       </a>
-      <p class="contact-note reveal reveal-delay-4">Zazwyczaj odpisuję tego samego dnia.</p>
+      <p class="contact-note reveal reveal-delay-4">Odpowiadam w ciągu 24h.</p>
       <p class="contact-location reveal reveal-delay-4">
         Gliwice & Śląsk — ale dla dobrego projektu wsiadam w auto.
       </p>
