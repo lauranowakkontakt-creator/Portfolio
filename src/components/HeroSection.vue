@@ -12,12 +12,12 @@
         <span class="outline-word">NOWAK</span>
       </h1>
 
-      <p class="hero-tagline reveal reveal-delay-1">Obraz, który ma znaczenie.</p>
+      <p class="hero-tagline reveal reveal-delay-1">Kamera, montaż, historia.</p>
 
       <p class="hero-desc reveal reveal-delay-2">
-        Łączę techniczny warsztat z intuicją. Realizuję produkcje od kameralnych
-        form po duże eventy, dbając o to, by efekt końcowy nie tylko dobrze
-        wyglądał, ale przede wszystkim – opowiadał historię.
+        Kamerą zajmuję się od 7 lat, montażem od 6. W tym czasie zrobiłam
+        ponad 200 projektów — wesela, studniówki, teledyski, podcasty.
+        Lubię, kiedy film coś mówi, nie tylko dobrze wygląda.
       </p>
 
       <div class="hero-actions reveal reveal-delay-3">

@@ -5,9 +5,9 @@
       <div class="services-head reveal">
         <div>
           <p class="section-label">Usługi</p>
-          <h2>W czym mogę<br>Ci pomóc?</h2>
+          <h2>Co robię?</h2>
         </div>
-        <p class="services-tag">Wybierz obszar — albo opowiedz mi o projekcie, a zaproponuję jak go złożyć.</p>
+        <p class="services-tag">Przyjmuję zlecenia na każdym etapie — od pomysłu po gotowy plik.</p>
       </div>
 
       <div class="services-grid">
@@ -30,18 +30,8 @@
       </div>
 
       <div class="tools-row reveal reveal-delay-3">
-        <span class="tools-label">W czym pracuję</span>
+        <span class="tools-label">Czym pracuję</span>
         <div class="tools-grid">
-          <div class="tool-chip">
-            <span class="tool-icon">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4">
-                <circle cx="15" cy="15" r="12"/>
-                <path d="M15 3 a12 12 0 0 1 0 24" stroke="currentColor" stroke-width="1.4" fill="currentColor" fill-opacity="0.18"/>
-                <circle cx="15" cy="15" r="4" fill="currentColor"/>
-              </svg>
-            </span>
-            <span class="tool-name"><span class="tool-cat">Postprodukcja</span>DaVinci Resolve <small>Studio</small></span>
-          </div>
           <div class="tool-chip">
             <span class="tool-icon">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
@@ -51,7 +41,10 @@
                 <rect x="22" y="11" width="3" height="1.5" rx="0.5" fill="currentColor" stroke="none"/>
               </svg>
             </span>
-            <span class="tool-name"><span class="tool-cat">Kamera</span>Panasonic Lumix <small>S5IIX</small></span>
+            <span class="tool-info">
+              <span class="tool-cat">Kamera</span>
+              <span class="tool-device">Panasonic Lumix S5IIX</span>
+            </span>
           </div>
           <div class="tool-chip">
             <span class="tool-icon">
@@ -62,7 +55,10 @@
                 <circle cx="15" cy="15" r="1.8" fill="currentColor"/>
               </svg>
             </span>
-            <span class="tool-name"><span class="tool-cat">Kamera 360°</span>Insta360 <small>X4</small></span>
+            <span class="tool-info">
+              <span class="tool-cat">Kamera 360°</span>
+              <span class="tool-device">Insta360 X4</span>
+            </span>
           </div>
           <div class="tool-chip">
             <span class="tool-icon">
@@ -73,40 +69,10 @@
                 <path d="M15 4 L15 7 M15 23 L15 26 M4 15 L7 15 M23 15 L26 15" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="tool-name"><span class="tool-cat">Obiektyw</span>Sigma 24-70mm <small>f/2.8 ART II</small></span>
-          </div>
-          <div class="tool-chip">
-            <span class="tool-icon">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11 4 L19 4 L22 12 L22 18 L8 18 L8 12 Z"/>
-                <path d="M15 18 L15 24"/>
-                <path d="M11 26 L19 26"/>
-                <path d="M12 8 L18 8 M12 11 L18 11 M12 14 L18 14" opacity="0.5"/>
-              </svg>
+            <span class="tool-info">
+              <span class="tool-cat">Obiektyw</span>
+              <span class="tool-device">Sigma 24-70mm f/2.8 ART II</span>
             </span>
-            <span class="tool-name"><span class="tool-cat">Światło COB</span>Nanlite Forza <small>60B II</small></span>
-          </div>
-          <div class="tool-chip">
-            <span class="tool-icon">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="6" y="6" width="18" height="18" rx="1"/>
-                <path d="M6 11 L24 11 M6 16 L24 16 M6 21 L24 21"/>
-                <circle cx="10" cy="8.5" r="1" fill="currentColor" stroke="none"/>
-                <circle cx="15" cy="13.5" r="1" fill="currentColor" stroke="none"/>
-                <circle cx="20" cy="18.5" r="1" fill="currentColor" stroke="none"/>
-              </svg>
-            </span>
-            <span class="tool-name"><span class="tool-cat">Panel RGB</span>Nanlite Litolite <small>5C RGB</small></span>
-          </div>
-          <div class="tool-chip">
-            <span class="tool-icon">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="2" width="5" height="26" rx="2.5"/>
-                <rect x="16" y="2" width="5" height="26" rx="2.5"/>
-                <path d="M11.5 6 L11.5 24 M18.5 6 L18.5 24" opacity="0.45"/>
-              </svg>
-            </span>
-            <span class="tool-name"><span class="tool-cat">Tuby RGB</span>Nanlite Pavotube II <small>30C × 2</small></span>
           </div>
           <div class="tool-chip">
             <span class="tool-icon">
@@ -119,16 +85,65 @@
                 <path d="M4 27 L8 27 M13 25 L17 25 M22 27 L26 27"/>
               </svg>
             </span>
-            <span class="tool-name"><span class="tool-cat">Statyw</span>Manfrotto</span>
+            <span class="tool-info">
+              <span class="tool-cat">Statyw</span>
+              <span class="tool-device">Manfrotto</span>
+            </span>
           </div>
           <div class="tool-chip">
             <span class="tool-icon">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 4 L20 12 L28 14 L22 20 L23 28 L15 24 L7 28 L8 20 L2 14 L10 12 Z" stroke-linejoin="round"/>
-                <circle cx="15" cy="15" r="3" fill="currentColor" stroke="none"/>
+                <path d="M11 4 L19 4 L22 12 L22 18 L8 18 L8 12 Z"/>
+                <path d="M15 18 L15 24"/>
+                <path d="M11 26 L19 26"/>
+                <path d="M12 8 L18 8 M12 11 L18 11 M12 14 L18 14" opacity="0.5"/>
               </svg>
             </span>
-            <span class="tool-name"><span class="tool-cat">Workflow</span>AI Tools <small>Acceleration</small></span>
+            <span class="tool-info">
+              <span class="tool-cat">Światło</span>
+              <span class="tool-device">Nanlite Forza 60B II</span>
+            </span>
+          </div>
+          <div class="tool-chip">
+            <span class="tool-icon">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="6" width="18" height="18" rx="1"/>
+                <path d="M6 11 L24 11 M6 16 L24 16 M6 21 L24 21"/>
+                <circle cx="10" cy="8.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="15" cy="13.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="20" cy="18.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span class="tool-info">
+              <span class="tool-cat">Światło RGB</span>
+              <span class="tool-device">Nanlite Litolite 5C RGB</span>
+            </span>
+          </div>
+          <div class="tool-chip">
+            <span class="tool-icon">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="2" width="5" height="26" rx="2.5"/>
+                <rect x="16" y="2" width="5" height="26" rx="2.5"/>
+                <path d="M11.5 6 L11.5 24 M18.5 6 L18.5 24" opacity="0.45"/>
+              </svg>
+            </span>
+            <span class="tool-info">
+              <span class="tool-cat">Światło RGB</span>
+              <span class="tool-device">Nanlite Pavotube II 30C × 2</span>
+            </span>
+          </div>
+          <div class="tool-chip">
+            <span class="tool-icon">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="15" cy="15" r="12"/>
+                <path d="M15 3 a12 12 0 0 1 0 24" stroke="currentColor" stroke-width="1.4" fill="currentColor" fill-opacity="0.18"/>
+                <circle cx="15" cy="15" r="4" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="tool-info">
+              <span class="tool-cat">Postprodukcja</span>
+              <span class="tool-device">DaVinci Resolve Studio</span>
+            </span>
           </div>
         </div>
       </div>
@@ -141,30 +156,30 @@
 const services = [
   {
     num: '01',
-    title: 'Produkcje Eventowe & Reportaże',
-    desc: 'Studniówki, koncerty, wydarzenia firmowe. Pełna obsługa kamerowa od przygotowania po finalny montaż.',
-    tags: ['Multikamera', 'Live event', 'Reportaż'],
-    icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="22" height="16" rx="1"/><path d="M26 18 L36 13 L36 27 L26 22 Z"/><circle cx="10" cy="20" r="2"/></svg>`,
-  },
-  {
-    num: '02',
-    title: 'Filmy Ślubne & Teledyski',
-    desc: 'Emocje ujęte w nowoczesną formę. Dbam o każdy detal — od kompozycji kadru po rytm w montażu.',
-    tags: ['Cinematic', 'Storytelling', 'Color'],
+    title: 'Filmy ślubne & teledyski',
+    desc: 'Wesela to spora część mojej pracy. Kręcę zarówno pełne filmy jak i krótkie teledyski — zależy co para chce zapamiętać. Dbam o emocje, nie tylko o ładne kadry.',
+    tags: ['Film ślubny', 'Teledysk', 'Wesele'],
     icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 28 L14 14 a6 6 0 0 1 12 0 L26 28"/><path d="M10 28 L30 28"/><circle cx="20" cy="14" r="2.5"/><path d="M20 16.5 L20 22"/></svg>`,
   },
   {
+    num: '02',
+    title: 'Studniówki & eventy',
+    desc: 'Studniówki, koncerty, eventy firmowe. Wiem jak poruszać się z kamerą w tłumie i jak wyłapać momenty zanim znikną. Obsługa jednoosobowa lub z ekipą — do uzgodnienia.',
+    tags: ['Studniówka', 'Event', 'Koncert'],
+    icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="22" height="16" rx="1"/><path d="M26 18 L36 13 L36 27 L26 22 Z"/><circle cx="10" cy="20" r="2"/></svg>`,
+  },
+  {
     num: '03',
-    title: 'Content Digitalowy',
-    desc: 'Podcasty, nagrania muzyczne, formaty social media. Produkcja i postprodukcja dopasowana do platformy.',
-    tags: ['Podcast', 'Reels', 'Music video'],
+    title: 'Muzyka, podcasty & social',
+    desc: 'Teledyski muzyczne, nagrania podcastów, treści na social media. Produkcja i montaż w jednym — od ustawienia sprzętu po finalny plik gotowy do wrzucenia.',
+    tags: ['Teledysk', 'Podcast', 'Reels'],
     icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="6" width="10" height="18" rx="5"/><path d="M9 19 a11 11 0 0 0 22 0"/><path d="M20 30 L20 34"/><path d="M14 34 L26 34"/></svg>`,
   },
   {
     num: '04',
-    title: 'Postprodukcja',
-    desc: 'Profesjonalny montaż i color grading powierzonych materiałów. Pracuję w DaVinci Resolve Studio.',
-    tags: ['Edit', 'Color grading', 'DaVinci'],
+    title: 'Tylko montaż',
+    desc: 'Masz już nakręcony materiał? Mogę go zmontować i wygradować. Pracuję w DaVinci Resolve Studio, więc kolor traktuję poważnie. Przyjmuję materiały z różnych kamer.',
+    tags: ['Montaż', 'Color grading', 'DaVinci'],
     icon: `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M20 7 a13 13 0 0 1 0 26"/><circle cx="20" cy="20" r="4" fill="currentColor" stroke="none"/></svg>`,
   },
 ]
@@ -368,16 +383,6 @@ p {
   background: rgba(201,75,40,0.06);
 }
 
-.tool-cat {
-  font-family: var(--font-body);
-  font-size: 0.5rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent2);
-  display: block;
-  margin-bottom: 3px;
-}
-
 .tool-icon {
   width: 32px;
   height: 32px;
@@ -394,22 +399,27 @@ p {
   transform: rotate(-6deg) scale(1.08);
 }
 
-.tool-name {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  color: var(--text);
-  line-height: 1.15;
+.tool-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.tool-name small {
-  font-size: 0.55rem;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  display: block;
-  margin-top: 3px;
-  font-family: var(--font-body);
+.tool-cat {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  line-height: 1;
   text-transform: uppercase;
+}
+
+.tool-device {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  line-height: 1;
 }
 
 @media (max-width: 1024px) {

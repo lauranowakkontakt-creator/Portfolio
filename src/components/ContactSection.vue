@@ -2,18 +2,17 @@
   <section class="contact" id="contact">
     <div class="contact-inner">
       <p class="section-label reveal">Kontakt</p>
-      <h2 class="reveal reveal-delay-1">ZRÓBMY RAZEM<br>COŚ DOBREGO.</h2>
+      <h2 class="reveal reveal-delay-1">POGADAJMY.</h2>
       <p class="contact-desc reveal reveal-delay-2">
-        Szukasz kogoś, kto weźmie odpowiedzialność za obraz w Twoim projekcie?
-        A może potrzebujesz sprawnego montażu z dbałością o rytm i kolor?
-        Napisz — chętnie porozmawiam.
+        Masz projekt? Napisz kilka słów o tym co planujesz.
+        Odpiszę szybko i bez owijania w bawełnę.
       </p>
       <a href="mailto:laura.nowak.kontakt@gmail.com" class="contact-email reveal reveal-delay-3">
         laura.nowak.kontakt@gmail.com
       </a>
-      <p class="contact-note reveal reveal-delay-4">Odpowiadam zazwyczaj w ciągu 24 godzin.</p>
+      <p class="contact-note reveal reveal-delay-4">Zazwyczaj odpisuję tego samego dnia.</p>
       <p class="contact-location reveal reveal-delay-4">
-        Działam na Śląsku (Gliwice) — dla ciekawych projektów chętnie ruszam w trasę.
+        Gliwice & Śląsk — ale dla dobrego projektu wsiadam w auto.
       </p>
     </div>
   </section>

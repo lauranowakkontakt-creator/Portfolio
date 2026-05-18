@@ -5,12 +5,12 @@
 
         <div class="about-left">
           <p class="section-label reveal">O mnie</p>
-          <h2 class="reveal reveal-delay-1">7 lat w kadrze,<br>6 lat w montażowni.</h2>
+          <h2 class="reveal reveal-delay-1">7 lat z kamerą,<br>6 w montażowni.</h2>
           <p class="lead reveal reveal-delay-2">
-            Ponad 200 domkniętych projektów. Moje doświadczenie to nie tylko liczby —
-            to setki godzin na planach w najróżniejszych warunkach. Pracuję jako operatorka,
-            montażystka i reżyserka. Koordynuję ekipy i prowadzę projekty od surowego pomysłu
-            po finalny eksport.
+            Zaczęłam od kręcenia filmów na telefon — dziś mam za sobą setki godzin
+            na planach w różnych warunkach. Pracuję jako operatorka i montażystka,
+            ale jak trzeba to prowadzę cały projekt od briefu po eksport.
+            Kończę też studia psychologiczne, co — jak się okazuje — bardzo pomaga na planie.
           </p>
           <div class="about-stats reveal reveal-delay-3">
             <div class="stat-cell">
@@ -53,16 +53,16 @@
 <script setup>
 const pillars = [
   {
-    title: 'Psychologiczne podejście',
-    text: 'Kończę studia psychologiczne, co w mojej pracy jest „supermocą". Rozumiem emocje na ekranie i dbam o te na planie. Buduję atmosferę, w której każdy czuje się swobodnie — co przekłada się na naturalne ujęcia.',
+    title: 'Psychologia na planie',
+    text: 'Studiuję psychologię i naprawdę zmienia to pracę z ludźmi. Szybciej się rozluźniają, ujęcia wychodzą naturalniej. Dobra atmosfera na planie słychać i widać w finalnym materiale.',
   },
   {
-    title: 'Warsztat i narzędzia',
-    text: 'Moim głównym środowiskiem jest DaVinci Resolve Studio. Sprawnie wdrażam narzędzia AI, które przyspieszają workflow, nie zabijając przy tym kreatywności.',
+    title: 'DaVinci Resolve Studio',
+    text: 'To moje główne narzędzie od kilku lat. Montaż, kolor, dźwięk — wszystko w jednym miejscu. Używam też narzędzi AI, ale tylko tam gdzie naprawdę przyspieszają pracę.',
   },
   {
-    title: 'Wszechstronność',
-    text: 'Nieważne, czy to dynamiczny teledysk, intymny reportaż ślubny, czy techniczny podcast — adaptuję styl do Twojej wizji, zachowując najwyższą jakość detalu.',
+    title: 'Każdy projekt inaczej',
+    text: 'Kameralne wesele, energiczny teledysk, kilkudniowy event — za każdym razem podchodzę świeżo. Nie mam jednego szablonu, który przykładam do wszystkiego.',
   },
 ]
 </script>

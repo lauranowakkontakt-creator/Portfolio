@@ -23,7 +23,6 @@
 
     <!-- bottom info bar -->
     <div class="v-bar">
-      <p class="v-type">{{ video.type || (video.cat ? video.cat.toUpperCase() : 'FILM') }}</p>
       <p class="v-title" v-if="video.title">{{ video.title }}</p>
     </div>
 
