@@ -21,7 +21,7 @@
     <ul class="nav-links">
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#about">O mnie</a></li>
-      <li><a href="#services">Usługi</a></li>
+      <li><a href="#services">Doświadczenie</a></li>
       <li><a href="#contact">Kontakt</a></li>
     </ul>
   </nav>

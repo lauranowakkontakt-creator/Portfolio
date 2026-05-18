@@ -4,7 +4,7 @@
     <div class="hero-left">
       <p class="eyebrow reveal">
         <span class="eyebrow-line"></span>
-        Operatorka Kamery&nbsp;·&nbsp;Montażystka Wideo&nbsp;·&nbsp;Gliwice &amp; Śląsk
+        Operator Kamery&nbsp;·&nbsp;Montażysta Wideo&nbsp;·&nbsp;Gliwice &amp; Śląsk
       </p>
 
       <h1 class="reveal reveal-delay-1">

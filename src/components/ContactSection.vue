@@ -4,7 +4,7 @@
       <p class="section-label reveal">Kontakt</p>
       <h2 class="reveal reveal-delay-1">Pogadajmy.</h2>
       <p class="contact-desc reveal reveal-delay-2">
-        Szukasz operatorki lub montażystki do projektu,
+        Szukasz operatora lub montażysty do projektu,
         albo interesuje Cię stała współpraca w produkcji czy postprodukcji?
       </p>
       <a href="mailto:laura.nowak.kontakt@gmail.com" class="contact-email reveal reveal-delay-3">
