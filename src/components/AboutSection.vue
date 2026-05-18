@@ -38,6 +38,10 @@
               <span class="stat-num">6</span>
               <span class="stat-lbl">Lat w montażu</span>
             </div>
+            <div class="stat-cell">
+              <span class="stat-num">250<sup>+</sup></span>
+              <span class="stat-lbl">Realizacji live</span>
+            </div>
           </div>
         </div>
 
@@ -135,7 +139,7 @@ h2::after {
 
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   margin-top: 1rem;
