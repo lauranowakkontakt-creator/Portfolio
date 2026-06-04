@@ -25,6 +25,8 @@
             bycie blisko drugiego człowieka i towarzyszenie mu w tym,
             z czym się mierzy.
           </p>
+
+          <!-- Stats grid -->
           <div class="about-stats reveal reveal-delay-3">
             <div class="stat-cell">
               <span class="stat-num">6</span>
@@ -43,6 +45,24 @@
               <span class="stat-lbl">Realizacji live</span>
             </div>
           </div>
+
+          <!-- Skill bars -->
+          <div class="skill-section reveal reveal-delay-4" ref="barsRef">
+            <p class="skill-heading">Doświadczenie</p>
+            <div class="skill-bars">
+              <div v-for="skill in skills" :key="skill.label" class="skill-row">
+                <span class="skill-name">{{ skill.label }}</span>
+                <div class="skill-track">
+                  <div
+                    class="skill-fill"
+                    :style="{ width: barsVisible ? skill.pct + '%' : '0%', transitionDelay: skill.delay }"
+                  ></div>
+                </div>
+                <span class="skill-yrs">{{ skill.years }}</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -51,6 +71,30 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
+const barsRef = ref(null)
+const barsVisible = ref(false)
+
+const skills = [
+  { label: 'Operator kamery',  years: '7 lat', pct: 100, delay: '0ms'   },
+  { label: 'Montaż wideo',     years: '6 lat', pct: 86,  delay: '100ms' },
+  { label: 'Color grading',    years: '5 lat', pct: 71,  delay: '200ms' },
+  { label: 'Eventy & live',    years: '4 lat', pct: 57,  delay: '300ms' },
+]
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        barsVisible.value = true
+        observer.disconnect()
+      }
+    },
+    { threshold: 0.4 }
+  )
+  if (barsRef.value) observer.observe(barsRef.value)
+})
 </script>
 
 <style scoped>
@@ -136,7 +180,7 @@ h2::after {
   margin-bottom: 2.4rem;
 }
 
-
+/* ── Stats grid ── */
 .about-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -180,18 +224,101 @@ h2::after {
   color: var(--muted);
 }
 
+/* ── Skill bars ── */
+.skill-section {
+  margin-top: 2.8rem;
+}
+
+.skill-heading {
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.4rem;
+  opacity: 0.6;
+}
+
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skill-name {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  width: 160px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.skill-track {
+  flex: 1;
+  height: 2px;
+  background: var(--border2);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-fill {
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  background: linear-gradient(to right, var(--accent), var(--accent2));
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-yrs {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  width: 42px;
+  text-align: right;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .about { padding-left: 2.5rem; padding-right: 2.5rem; }
 }
 
 @media (max-width: 700px) {
   .about { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .about-stats { grid-template-columns: 1fr; }
-  .stat-cell {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 0 !important;
+
+  /* 2×2 grid for stats on mobile */
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
   }
-  .stat-cell:last-child { border-bottom: none; }
+  .stat-cell {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0.8rem !important;
+  }
+  .stat-cell:nth-child(2),
+  .stat-cell:nth-child(4) {
+    border-right: none;
+  }
+  .stat-cell:nth-child(3),
+  .stat-cell:nth-child(4) {
+    border-bottom: none;
+  }
+
+  .skill-name { width: 130px; font-size: 0.7rem; }
+}
+
+@media (max-width: 400px) {
+  .skill-name { width: 110px; font-size: 0.65rem; }
+  .skill-yrs  { width: 34px; font-size: 0.58rem; }
 }
 </style>

@@ -1,11 +1,11 @@
 export const categories = [
-  { id: 'all',        label: 'Wszystkie' },
-  { id: 'wesele',     label: 'Filmy ślubne' },
-  { id: 'muzyka',     label: 'Muzyka' },
-  { id: 'podcast',    label: 'Podcast' },
-  { id: 'studniowka', label: 'Studniówka' },
-  { id: 'relacje',    label: 'Relacje' },
-  { id: 'shorts',     label: 'Shorts' },
+  { id: 'all',        label: 'Wszystkie',    emoji: '🎬' },
+  { id: 'wesele',     label: 'Filmy ślubne', emoji: '💍' },
+  { id: 'muzyka',     label: 'Muzyka',       emoji: '🎵' },
+  { id: 'podcast',    label: 'Podcast',      emoji: '🎙️' },
+  { id: 'studniowka', label: 'Studniówka',   emoji: '🎓' },
+  { id: 'relacje',    label: 'Relacje',      emoji: '📸' },
+  { id: 'shorts',     label: 'Shorts',       emoji: '⚡' },
 ]
 
 export const videos = [

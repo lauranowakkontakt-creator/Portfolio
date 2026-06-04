@@ -18,6 +18,7 @@
         @click="setTab(cat.id)"
         role="tab"
       >
+        <span class="tab-emoji">{{ cat.emoji }}</span>
         {{ cat.label }}
         <span class="tab-count">{{ countFor(cat.id) }}</span>
       </button>
@@ -195,6 +196,16 @@ h2 {
 
 .tab:hover { color: var(--text); }
 .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+.tab-emoji {
+  font-size: 0.85rem;
+  line-height: 1;
+  margin-right: 0.1rem;
+  filter: saturate(0.7);
+  transition: filter 0.2s;
+}
+.tab:hover .tab-emoji,
+.tab.active .tab-emoji { filter: saturate(1); }
 
 .tab-count { font-size: 0.56rem; opacity: 0.45; }
 .tab.active .tab-count { color: var(--accent); opacity: 1; }
