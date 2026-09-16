@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Laura Nowak — CV</title>
+<meta name="description" content="CV — Laura Nowak, operator kamery i montażysta wideo. Gliwice & Śląsk." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+:root {
+  --bg:      #080808;
+  --surface: #101010;
+  --text:    #EDEAE5;
+  --muted:   #7A7470;
+  --accent:  #C94B28;
+  --accent2: #E05E38;
+  --line:    rgba(237,234,229,0.10);
+  --line2:   rgba(237,234,229,0.20);
+  --track:   rgba(237,234,229,0.08);
+
+  --font-display: 'Bebas Neue', 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  max-width: 940px;
+  margin: 0 auto;
+  padding-block: 2.5rem 3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ── Nagłówek ─────────────────────────────────────────── */
+.head { border-bottom: 1px solid var(--line2); padding-bottom: 1.6rem; }
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 1.1rem;
+}
+.rec-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+.eyebrow .tc { color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3.2rem, 11vw, 6rem);
+  line-height: 0.88;
+  letter-spacing: 0.03em;
+  text-wrap: balance;
+}
+.name .outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text);
+  text-stroke: 1.5px var(--text);
+}
+
+.role {
+  margin-top: 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.contact-row {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.8rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.contact-row a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+.contact-row a:hover { color: var(--accent2); }
+.contact-row .ck {
+  display: block;
+  font-size: 0.55rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.65;
+  margin-bottom: 0.15rem;
+}
+
+/* ── Siatka ───────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 0 3rem;
+  margin-top: 2.2rem;
+  align-items: start;
+}
+.col { display: flex; flex-direction: column; gap: 2rem; }
+.col-main { border-left: 1px solid var(--line); padding-left: 3rem; }
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line2);
+}
+
+p + p { margin-top: 0.8rem; }
+.body-txt { font-size: 0.88rem; color: #C9C4BE; max-width: 62ch; }
+
+/* ── Liczby ───────────────────────────────────────────── */
+.figures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 1.3rem;
+}
+.fig { background: var(--surface); padding: 0.85rem 0.9rem; }
+.fig .n {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  line-height: 1;
+  color: var(--accent2);
+  font-variant-numeric: tabular-nums;
+}
+.fig .l {
+  display: block;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+/* ── Paski kompetencji ────────────────────────────────── */
+.bars { display: flex; flex-direction: column; gap: 0.85rem; }
+.bar-row { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.8rem; align-items: baseline; }
+.bar-name { font-size: 0.82rem; color: var(--text); }
+.bar-yrs {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.track { grid-column: 1 / -1; height: 3px; background: var(--track); overflow: hidden; }
+.fill { height: 100%; background: var(--accent); }
+
+/* ── Obszary realizacji ───────────────────────────────── */
+.areas { display: flex; flex-direction: column; }
+.area {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr auto;
+  gap: 0 1rem;
+  align-items: baseline;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.area:first-child { border-top: 1px solid var(--line); }
+.area .cnt {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--accent2);
+  font-variant-numeric: tabular-nums;
+}
+.area .ttl { font-size: 0.88rem; color: var(--text); }
+.area .sub { font-size: 0.74rem; color: var(--muted); display: block; }
+.area .yrs {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── Sprzęt / listy ───────────────────────────────────── */
+.kit { display: flex; flex-direction: column; gap: 0.75rem; }
+.kit-row { display: grid; grid-template-columns: 1fr; gap: 0.1rem; }
+.kit-cat {
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.kit-val { font-size: 0.82rem; color: var(--text); }
+
+ul.plain { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+ul.plain li {
+  font-size: 0.83rem;
+  color: #C9C4BE;
+  padding-left: 0.95rem;
+  position: relative;
+}
+ul.plain li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.68em;
+  width: 5px; height: 1px;
+  background: var(--accent);
+}
+
+.edu-item .deg { font-size: 0.88rem; color: var(--text); }
+.edu-item .meta { font-size: 0.74rem; color: var(--muted); }
+
+/* ── Stopka ───────────────────────────────────────────── */
+.foot {
+  margin-top: 2.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  align-items: baseline;
+}
+.clause { font-size: 0.6rem; line-height: 1.6; color: var(--muted); opacity: 0.75; max-width: 70ch; }
+.foot-tc {
+  font-size: 0.55rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.5;
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Telefon ──────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; gap: 2rem; }
+  .col-main { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 2rem; }
+  .area { grid-template-columns: 2.6rem 1fr; }
+  .area .yrs { grid-column: 2; }
+  .figures { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Druk: A4, papier ─────────────────────────────────── */
+@page { size: A4; margin: 12mm; }
+
+@media print {
+  :root {
+    --bg:      #FFFFFF;
+    --surface: #FAF8F5;
+    --text:    #16130F;
+    --muted:   #5F5A55;
+    --accent:  #C94B28;
+    --accent2: #B03F20;
+    --line:    rgba(22,19,15,0.14);
+    --line2:   rgba(22,19,15,0.30);
+    --track:   rgba(22,19,15,0.10);
+  }
+  body { line-height: 1.55; font-size: 10.5pt; }
+  .sheet { max-width: none; padding: 0; }
+  .body-txt, ul.plain li { color: #2B2621; }
+  .name { font-size: 46pt; }
+  .name .outline { -webkit-text-stroke: 1px var(--text); }
+  .head { padding-bottom: 10pt; }
+  .grid { margin-top: 12pt; gap: 0 20pt; }
+  .col { gap: 14pt; }
+  .col-main { padding-left: 20pt; }
+  .area { padding: 4pt 0; }
+  .fig { padding: 6pt 8pt; }
+  .foot { margin-top: 14pt; }
+  a { color: var(--text) !important; }
+  .area, .head, h2, .fig { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <header class="head">
+    <p class="eyebrow">
+      <span class="rec-dot"></span>
+      CV · Gliwice &amp; Śląsk
+      <span class="tc">09.2026</span>
+    </p>
+
+    <h1 class="name">LAURA <span class="outline">NOWAK</span></h1>
+
+    <p class="role">Operator Kamery &nbsp;·&nbsp; Montażysta Wideo</p>
+
+    <div class="contact-row">
+      <span>
+        <span class="ck">E-mail</span>
+        <a href="mailto:laura.nowak.kontakt@gmail.com">laura.nowak.kontakt@gmail.com</a>
+      </span>
+      <span>
+        <span class="ck">Portfolio</span>
+        <a href="https://lauranowakkontakt-creator.github.io/Portfolio/">lauranowakkontakt-creator.github.io/Portfolio</a>
+      </span>
+      <span>
+        <span class="ck">Lokalizacja</span>
+        Gliwice &amp; Śląsk — z gotowością do wyjazdów
+      </span>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- ── Lewa kolumna ──────────────────────────────── -->
+    <div class="col">
+
+      <section>
+        <h2>Doświadczenie</h2>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-name">Operator kamery</span>
+            <span class="bar-yrs">7 lat</span>
+            <div class="track"><div class="fill" style="width:100%"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-name">Montaż wideo</span>
+            <span class="bar-yrs">6 lat</span>
+            <div class="track"><div class="fill" style="width:86%"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-name">Color grading</span>
+            <span class="bar-yrs">5 lat</span>
+            <div class="track"><div class="fill" style="width:71%"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-name">Eventy &amp; realizacje live</span>
+            <span class="bar-yrs">4 lata</span>
+            <div class="track"><div class="fill" style="width:57%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sprzęt</h2>
+        <div class="kit">
+          <div class="kit-row">
+            <span class="kit-cat">Kamera</span>
+            <span class="kit-val">Panasonic Lumix S5IIX</span>
+          </div>
+          <div class="kit-row">
+            <span class="kit-cat">Kamera 360°</span>
+            <span class="kit-val">Insta360 X4</span>
+          </div>
+          <div class="kit-row">
+            <span class="kit-cat">Optyka</span>
+            <span class="kit-val">Sigma 24-70 mm f/2.8 ART II</span>
+          </div>
+          <div class="kit-row">
+            <span class="kit-cat">Światło</span>
+            <span class="kit-val">Nanlite Forza 60B II · Pavotube II 30C × 2</span>
+          </div>
+          <div class="kit-row">
+            <span class="kit-cat">Statyw</span>
+            <span class="kit-val">Manfrotto</span>
+          </div>
+          <div class="kit-row">
+            <span class="kit-cat">Postprodukcja</span>
+            <span class="kit-val">DaVinci Resolve Studio — montaż i color grading</span>
+          </div>
+          <div class="kit-row">
+            <span class="kit-cat">Workflow</span>
+            <span class="kit-val">Narzędzia AI wspierające produkcję</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Mocne strony</h2>
+        <ul class="plain">
+          <li>Elastyczność i szybkie reagowanie na to, co dzieje się na planie</li>
+          <li>Spokój i cierpliwość — praca z detalem w montażu</li>
+          <li>Samodzielność w całym procesie: od zdjęć po finalny color grading</li>
+          <li>Swobodna praca z ludźmi przed kamerą</li>
+          <li>Ciekawość branżowych nowinek i szybkie wdrażanie nowych narzędzi</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Edukacja</h2>
+        <div class="edu-item">
+          <p class="deg">Psychologia — studia w toku</p>
+          <p class="meta">Kierunek wybrany świadomie: praca z ludźmi i ich historiami jest częścią tego, jak podchodzę do bohaterów przed kamerą.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ── Prawa kolumna ─────────────────────────────── -->
+    <div class="col col-main">
+
+      <section>
+        <h2>Profil</h2>
+        <p class="body-txt">
+          Od siedmiu lat pracuję z kamerą, od sześciu przy montażu. Byłam po obu stronach
+          tej pracy — wiem, jak wygląda plan i wiem, jak wygląda montaż o drugiej w nocy.
+          Kiedy nagrywam, już myślę o tym, co z tego materiału powstanie. Kiedy montuję —
+          pamiętam, co czułam za kamerą.
+        </p>
+        <p class="body-txt">
+          Przewinęłam się przez najróżniejsze plany zdjęciowe i formaty — od kameralnych
+          realizacji po duże eventy i koncerty. Praca w tak różnych warunkach nauczyła mnie
+          przede wszystkim elastyczności i szybkiego reagowania na to, co dzieje się wokół.
+          Śledzę nowinki branżowe i chętnie sięgam po nowe narzędzia, w tym rozwiązania
+          oparte na AI, które pozwalają mi pracować sprawniej.
+        </p>
+
+        <div class="figures">
+          <div class="fig"><span class="n">200+</span><span class="l">Zrealizowanych projektów</span></div>
+          <div class="fig"><span class="n">250+</span><span class="l">Realizacji live</span></div>
+          <div class="fig"><span class="n">108</span><span class="l">Filmów w portfolio</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Obszary realizacji</h2>
+        <div class="areas">
+
+          <div class="area">
+            <span class="cnt">31</span>
+            <span>
+              <span class="ttl">Podcasty i formaty mówione</span>
+              <span class="sub">Zdjęcia wielokamerowe, montaż odcinków, formaty cykliczne</span>
+            </span>
+            <span class="yrs">2021–2025</span>
+          </div>
+
+          <div class="area">
+            <span class="cnt">25</span>
+            <span>
+              <span class="ttl">Formaty pionowe i shorts</span>
+              <span class="sub">Krótkie formy pod social media, przemontaż materiału z realizacji</span>
+            </span>
+            <span class="yrs">—</span>
+          </div>
+
+          <div class="area">
+            <span class="cnt">18</span>
+            <span>
+              <span class="ttl">Filmy i teledyski ślubne</span>
+              <span class="sub">Pełne filmy oraz teledyski — zdjęcia, montaż, kolor</span>
+            </span>
+            <span class="yrs">2022–2025</span>
+          </div>
+
+          <div class="area">
+            <span class="cnt">13</span>
+            <span>
+              <span class="ttl">Teledyski i projekty muzyczne</span>
+              <span class="sub">Współpraca z artystami, realizacje koncertowe</span>
+            </span>
+            <span class="yrs">2021–2026</span>
+          </div>
+
+          <div class="area">
+            <span class="cnt">9</span>
+            <span>
+              <span class="ttl">Studniówki</span>
+              <span class="sub">Filmy, teledyski i reportaże z wydarzenia</span>
+            </span>
+            <span class="yrs">2022–2023</span>
+          </div>
+
+          <div class="area">
+            <span class="cnt">3</span>
+            <span>
+              <span class="ttl">Reportaże i relacje z eventów</span>
+              <span class="sub">Relacje z wydarzeń, materiały dokumentalne</span>
+            </span>
+            <span class="yrs">2021–2025</span>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <h2>Zakres usług</h2>
+        <ul class="plain">
+          <li><strong style="font-weight:500">Zdjęcia</strong> — obsługa kamery na planie, praca ze światłem, realizacje jedno- i wielokamerowe</li>
+          <li><strong style="font-weight:500">Montaż</strong> — pełny montaż filmów, teledysków, odcinków i krótkich form</li>
+          <li><strong style="font-weight:500">Postprodukcja</strong> — color grading w DaVinci Resolve Studio, korekta i finalizacja materiału</li>
+          <li><strong style="font-weight:500">Eventy i live</strong> — realizacje wydarzeń, koncertów i imprez okolicznościowych</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="foot">
+    <p class="clause">
+      Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w niniejszym dokumencie
+      do realizacji procesu rekrutacji zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych
+      osobowych (Dz. U. z 2018 r., poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego
+      i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO).
+    </p>
+    <span class="foot-tc">00:21:37</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
