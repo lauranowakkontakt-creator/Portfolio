@@ -4,175 +4,249 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Laura Nowak — CV</title>
-<meta name="description" content="CV — Laura Nowak, operator kamery i montażysta wideo. Gliwice & Śląsk." />
+<meta name="description" content="CV — Laura Nowak, operator kamery i montażysta wideo. Gliwice i Śląsk." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 
+/* ── Tokeny: wersja jasna (papier) ─────────────────────── */
 :root {
-  --bg:      #080808;
-  --surface: #101010;
-  --text:    #EDEAE5;
-  --muted:   #7A7470;
-  --accent:  #C94B28;
-  --accent2: #E05E38;
-  --line:    rgba(237,234,229,0.10);
-  --line2:   rgba(237,234,229,0.20);
-  --track:   rgba(237,234,229,0.08);
+  --paper:  #FFFFFF;
+  --panel:  #F5F2EE;
+  --ink:    #16130F;
+  --ink2:   #3B352E;
+  --muted:  #6E675F;
+  --accent: #C94B28;
+  --accent-ink: #A63A1C;
+  --line:   rgba(22,19,15,0.13);
+  --line2:  rgba(22,19,15,0.26);
+  --track:  rgba(22,19,15,0.10);
 
   --font-display: 'Bebas Neue', 'Oswald', 'Arial Narrow', sans-serif;
   --font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* ── Tokeny: wersja ciemna (ekran) ─────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:  #0C0B0A;
+    --panel:  #151311;
+    --ink:    #EDEAE5;
+    --ink2:   #C7C1B9;
+    --muted:  #8A837B;
+    --accent: #E05E38;
+    --accent-ink: #E88A6B;
+    --line:   rgba(237,234,229,0.12);
+    --line2:  rgba(237,234,229,0.26);
+    --track:  rgba(237,234,229,0.10);
+  }
+}
+:root[data-theme="dark"] {
+  --paper:  #0C0B0A;
+  --panel:  #151311;
+  --ink:    #EDEAE5;
+  --ink2:   #C7C1B9;
+  --muted:  #8A837B;
+  --accent: #E05E38;
+  --accent-ink: #E88A6B;
+  --line:   rgba(237,234,229,0.12);
+  --line2:  rgba(237,234,229,0.26);
+  --track:  rgba(237,234,229,0.10);
+}
+
 body {
   font-family: var(--font-body);
   font-weight: 300;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
+  background: var(--paper);
+  color: var(--ink2);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 .sheet {
-  max-width: 940px;
+  max-width: 900px;
   margin: 0 auto;
-  padding-block: 2.5rem 3rem;
+  background: var(--paper);
+  padding-block: 2.2rem 2.4rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-/* ── Nagłówek ─────────────────────────────────────────── */
-.head { border-bottom: 1px solid var(--line2); padding-bottom: 1.6rem; }
-
-.eyebrow {
-  display: flex;
+/* ── Dane osobowe ──────────────────────────────────────── */
+.head {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1.6rem;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 0.58rem;
-  letter-spacing: 0.26em;
+  padding-bottom: 1.3rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Podmiana zdjęcia: zamień całego <div class="photo"> na
+   <img class="photo" src="public/cv-photo.jpg" alt="Laura Nowak" /> */
+.photo {
+  width: 6.5rem;
+  height: 8.25rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  object-fit: cover;
+  object-position: center top;
+}
+.photo .mono {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--accent);
+}
+.photo .hint {
+  font-size: 0.5rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent2);
-  margin-bottom: 1.1rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 0 0.4rem;
 }
-.rec-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent);
-  flex: none;
-}
-.eyebrow .tc { color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
 
 .name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(3.2rem, 11vw, 6rem);
-  line-height: 0.88;
-  letter-spacing: 0.03em;
-  text-wrap: balance;
+  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  line-height: 0.92;
+  letter-spacing: 0.035em;
+  color: var(--ink);
 }
-.name .outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--text);
-  text-stroke: 1.5px var(--text);
-}
-
 .role {
+  margin-top: 0.3rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.details {
   margin-top: 0.9rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.35rem 1.4rem;
+  font-size: 0.8rem;
+  color: var(--ink2);
 }
-
-.contact-row {
-  margin-top: 1.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.8rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-}
-.contact-row a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
-.contact-row a:hover { color: var(--accent2); }
-.contact-row .ck {
-  display: block;
+.details div { display: flex; gap: 0.45rem; align-items: baseline; }
+.details .k {
   font-size: 0.55rem;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
-  opacity: 0.65;
-  margin-bottom: 0.15rem;
+  flex: none;
+  min-width: 4.6rem;
+}
+.details a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+
+/* Pola do uzupełnienia */
+.todo {
+  color: var(--accent-ink);
+  border-bottom: 1px dashed var(--accent);
+  font-style: italic;
 }
 
-/* ── Siatka ───────────────────────────────────────────── */
+/* ── Układ dwukolumnowy ────────────────────────────────── */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1.7fr;
-  gap: 0 3rem;
-  margin-top: 2.2rem;
+  grid-template-columns: 1fr 1.9fr;
+  gap: 0 2.4rem;
+  margin-top: 1.6rem;
   align-items: start;
 }
-.col { display: flex; flex-direction: column; gap: 2rem; }
-.col-main { border-left: 1px solid var(--line); padding-left: 3rem; }
+.col { display: flex; flex-direction: column; gap: 1.5rem; }
+.col-side { background: var(--panel); padding: 1.2rem; border: 1px solid var(--line); }
 
 h2 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--line2);
+}
+
+p + p { margin-top: 0.6rem; }
+.body-txt { font-size: 0.85rem; color: var(--ink2); max-width: 64ch; }
+
+/* ── Doświadczenie zawodowe ────────────────────────────── */
+.job { margin-bottom: 1rem; }
+.job:last-child { margin-bottom: 0; }
+.job-dates {
+  font-size: 0.6rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text);
-  margin-bottom: 0.9rem;
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-}
-h2::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--line2);
-}
-
-p + p { margin-top: 0.8rem; }
-.body-txt { font-size: 0.88rem; color: #C9C4BE; max-width: 62ch; }
-
-/* ── Liczby ───────────────────────────────────────────── */
-.figures {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-top: 1.3rem;
-}
-.fig { background: var(--surface); padding: 0.85rem 0.9rem; }
-.fig .n {
-  font-family: var(--font-display);
-  font-size: 1.85rem;
-  line-height: 1;
-  color: var(--accent2);
+  color: var(--accent-ink);
   font-variant-numeric: tabular-nums;
 }
-.fig .l {
-  display: block;
-  font-size: 0.56rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 0.35rem;
+.job-title { font-size: 0.95rem; font-weight: 500; color: var(--ink); line-height: 1.35; }
+.job-org { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; }
+
+ul.duties { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+ul.duties li {
+  font-size: 0.83rem;
+  color: var(--ink2);
+  padding-left: 0.85rem;
+  position: relative;
+}
+ul.duties li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 5px; height: 1px;
+  background: var(--accent);
 }
 
-/* ── Paski kompetencji ────────────────────────────────── */
-.bars { display: flex; flex-direction: column; gap: 0.85rem; }
-.bar-row { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.8rem; align-items: baseline; }
-.bar-name { font-size: 0.82rem; color: var(--text); }
-.bar-yrs {
+/* ── Wybrane realizacje ────────────────────────────────── */
+.proj {
+  display: grid;
+  grid-template-columns: 5.6rem 1fr auto;
+  gap: 0 0.9rem;
+  align-items: baseline;
+  padding: 0.42rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.proj:first-child { border-top: 1px solid var(--line); }
+.proj .yrs {
   font-size: 0.62rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.proj .ttl { font-size: 0.85rem; color: var(--ink); }
+.proj .sub { display: block; font-size: 0.72rem; color: var(--muted); }
+.proj .cnt {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--accent-ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── Umiejętności: paski ───────────────────────────────── */
+.bars { display: flex; flex-direction: column; gap: 0.7rem; }
+.bar-row { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.6rem; align-items: baseline; }
+.bar-name { font-size: 0.8rem; color: var(--ink); }
+.bar-yrs {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
@@ -180,122 +254,90 @@ p + p { margin-top: 0.8rem; }
 .track { grid-column: 1 / -1; height: 3px; background: var(--track); overflow: hidden; }
 .fill { height: 100%; background: var(--accent); }
 
-/* ── Obszary realizacji ───────────────────────────────── */
-.areas { display: flex; flex-direction: column; }
-.area {
-  display: grid;
-  grid-template-columns: 3.2rem 1fr auto;
-  gap: 0 1rem;
-  align-items: baseline;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--line);
-}
-.area:first-child { border-top: 1px solid var(--line); }
-.area .cnt {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  line-height: 1;
-  color: var(--accent2);
-  font-variant-numeric: tabular-nums;
-}
-.area .ttl { font-size: 0.88rem; color: var(--text); }
-.area .sub { font-size: 0.74rem; color: var(--muted); display: block; }
-.area .yrs {
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-/* ── Sprzęt / listy ───────────────────────────────────── */
-.kit { display: flex; flex-direction: column; gap: 0.75rem; }
-.kit-row { display: grid; grid-template-columns: 1fr; gap: 0.1rem; }
+/* ── Listy w kolumnie bocznej ──────────────────────────── */
+.kit { display: flex; flex-direction: column; gap: 0.55rem; }
 .kit-cat {
-  font-size: 0.55rem;
-  letter-spacing: 0.22em;
+  display: block;
+  font-size: 0.53rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
 }
-.kit-val { font-size: 0.82rem; color: var(--text); }
+.kit-val { font-size: 0.79rem; color: var(--ink); line-height: 1.45; }
 
-ul.plain { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+ul.plain { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
 ul.plain li {
-  font-size: 0.83rem;
-  color: #C9C4BE;
-  padding-left: 0.95rem;
+  font-size: 0.79rem;
+  color: var(--ink2);
+  padding-left: 0.85rem;
   position: relative;
 }
 ul.plain li::before {
   content: "";
   position: absolute;
-  left: 0; top: 0.68em;
+  left: 0; top: 0.62em;
   width: 5px; height: 1px;
   background: var(--accent);
 }
 
-.edu-item .deg { font-size: 0.88rem; color: var(--text); }
-.edu-item .meta { font-size: 0.74rem; color: var(--muted); }
+.lang { display: flex; flex-direction: column; gap: 0.3rem; }
+.lang div { display: flex; justify-content: space-between; gap: 0.6rem; font-size: 0.79rem; color: var(--ink); }
+.lang span.lvl { color: var(--muted); font-size: 0.72rem; }
 
-/* ── Stopka ───────────────────────────────────────────── */
-.foot {
-  margin-top: 2.6rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line2);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.5rem;
-  align-items: baseline;
-}
-.clause { font-size: 0.6rem; line-height: 1.6; color: var(--muted); opacity: 0.75; max-width: 70ch; }
-.foot-tc {
-  font-size: 0.55rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+/* ── Klauzula ──────────────────────────────────────────── */
+.clause {
+  margin-top: 1.6rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.58rem;
+  line-height: 1.55;
   color: var(--muted);
-  opacity: 0.5;
-  margin-left: auto;
-  font-variant-numeric: tabular-nums;
 }
 
-/* ── Telefon ──────────────────────────────────────────── */
-@media (max-width: 720px) {
-  .grid { grid-template-columns: 1fr; gap: 2rem; }
-  .col-main { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 2rem; }
-  .area { grid-template-columns: 2.6rem 1fr; }
-  .area .yrs { grid-column: 2; }
-  .figures { grid-template-columns: 1fr 1fr; }
+/* ── Telefon ───────────────────────────────────────────── */
+@media screen and (max-width: 720px) {
+  .head { grid-template-columns: 1fr; gap: 1rem; justify-items: start; }
+  .grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .proj { grid-template-columns: 1fr auto; }
+  .proj .yrs { grid-column: 1 / -1; }
 }
 
-/* ── Druk: A4, papier ─────────────────────────────────── */
-@page { size: A4; margin: 12mm; }
+/* ── Druk: A4 ──────────────────────────────────────────── */
+@page { size: A4; margin: 11mm 12mm; }
 
 @media print {
   :root {
-    --bg:      #FFFFFF;
-    --surface: #FAF8F5;
-    --text:    #16130F;
-    --muted:   #5F5A55;
-    --accent:  #C94B28;
-    --accent2: #B03F20;
-    --line:    rgba(22,19,15,0.14);
-    --line2:   rgba(22,19,15,0.30);
-    --track:   rgba(22,19,15,0.10);
+    --paper:  #FFFFFF;
+    --panel:  #F5F2EE;
+    --ink:    #16130F;
+    --ink2:   #3B352E;
+    --muted:  #6E675F;
+    --accent: #C94B28;
+    --accent-ink: #A63A1C;
+    --line:   rgba(22,19,15,0.15);
+    --line2:  rgba(22,19,15,0.30);
+    --track:  rgba(22,19,15,0.12);
   }
-  body { line-height: 1.55; font-size: 10.5pt; }
+  html { font-size: 13.6px; }
+  body { line-height: 1.42; background: #fff; }
   .sheet { max-width: none; padding: 0; }
-  .body-txt, ul.plain li { color: #2B2621; }
-  .name { font-size: 46pt; }
-  .name .outline { -webkit-text-stroke: 1px var(--text); }
-  .head { padding-bottom: 10pt; }
-  .grid { margin-top: 12pt; gap: 0 20pt; }
-  .col { gap: 14pt; }
-  .col-main { padding-left: 20pt; }
-  .area { padding: 4pt 0; }
-  .fig { padding: 6pt 8pt; }
-  .foot { margin-top: 14pt; }
-  a { color: var(--text) !important; }
-  .area, .head, h2, .fig { break-inside: avoid; }
+  .head { padding-bottom: 0.6rem; }
+  .name { font-size: 2.5rem; }
+  .details { margin-top: 0.6rem; gap: 0.2rem 1.1rem; }
+  .grid { margin-top: 0.9rem; gap: 0 1.5rem; }
+  .col { gap: 0.95rem; }
+  .col-side { padding: 0.75rem; }
+  h2 { margin-bottom: 0.45rem; }
+  .bars { gap: 0.5rem; }
+  .kit { gap: 0.4rem; }
+  ul.plain { gap: 0.28rem; }
+  ul.duties { gap: 0.22rem; }
+  .job { margin-bottom: 0.6rem; }
+  .proj { padding: 0.28rem 0; }
+  .clause { margin-top: 0.8rem; padding-top: 0.5rem; }
+  a { color: var(--ink) !important; }
+  .job, .proj, .head, h2, .bar-row { break-inside: avoid; }
+  h2 { break-after: avoid; }
 }
 </style>
 </head>
@@ -303,43 +345,38 @@ ul.plain li::before {
 
 <div class="sheet">
 
+  <!-- ══ DANE OSOBOWE ═══════════════════════════════════ -->
   <header class="head">
-    <p class="eyebrow">
-      <span class="rec-dot"></span>
-      CV · Gliwice &amp; Śląsk
-      <span class="tc">09.2026</span>
-    </p>
+    <div class="photo">
+      <span class="mono">LN</span>
+      <span class="hint">zdjęcie</span>
+    </div>
 
-    <h1 class="name">LAURA <span class="outline">NOWAK</span></h1>
+    <div>
+      <h1 class="name">LAURA NOWAK</h1>
+      <p class="role">Operator kamery &nbsp;·&nbsp; Montażysta wideo</p>
 
-    <p class="role">Operator Kamery &nbsp;·&nbsp; Montażysta Wideo</p>
-
-    <div class="contact-row">
-      <span>
-        <span class="ck">E-mail</span>
-        <a href="mailto:laura.nowak.kontakt@gmail.com">laura.nowak.kontakt@gmail.com</a>
-      </span>
-      <span>
-        <span class="ck">Portfolio</span>
-        <a href="https://lauranowakkontakt-creator.github.io/Portfolio/">lauranowakkontakt-creator.github.io/Portfolio</a>
-      </span>
-      <span>
-        <span class="ck">Lokalizacja</span>
-        Gliwice &amp; Śląsk — z gotowością do wyjazdów
-      </span>
+      <div class="details">
+        <div><span class="k">Telefon</span><span class="todo">uzupełnij numer</span></div>
+        <div><span class="k">E-mail</span><a href="mailto:laura.nowak.kontakt@gmail.com">laura.nowak.kontakt@gmail.com</a></div>
+        <div><span class="k">Lokalizacja</span><span>Gliwice, woj. śląskie</span></div>
+        <div><span class="k">Portfolio</span><a href="https://lauranowakkontakt-creator.github.io/Portfolio/">lauranowakkontakt-creator.github.io/Portfolio</a></div>
+        <div><span class="k">Prawo jazdy</span><span class="todo">kat. B — potwierdź</span></div>
+        <div><span class="k">Dyspozycyjność</span><span>Śląsk, gotowość do wyjazdów</span></div>
+      </div>
     </div>
   </header>
 
   <div class="grid">
 
-    <!-- ── Lewa kolumna ──────────────────────────────── -->
-    <div class="col">
+    <!-- ══ KOLUMNA BOCZNA ═══════════════════════════════ -->
+    <aside class="col col-side">
 
       <section>
-        <h2>Doświadczenie</h2>
+        <h2>Umiejętności</h2>
         <div class="bars">
           <div class="bar-row">
-            <span class="bar-name">Operator kamery</span>
+            <span class="bar-name">Obsługa kamery</span>
             <span class="bar-yrs">7 lat</span>
             <div class="track"><div class="fill" style="width:100%"></div></div>
           </div>
@@ -353,178 +390,168 @@ ul.plain li::before {
             <span class="bar-yrs">5 lat</span>
             <div class="track"><div class="fill" style="width:71%"></div></div>
           </div>
-          <div class="bar-row">
-            <span class="bar-name">Eventy &amp; realizacje live</span>
-            <span class="bar-yrs">4 lata</span>
-            <div class="track"><div class="fill" style="width:57%"></div></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Oprogramowanie</h2>
+        <div class="kit">
+          <div>
+            <span class="kit-cat">Postprodukcja</span>
+            <span class="kit-val">DaVinci Resolve Studio — montaż, color grading, finalizacja</span>
+          </div>
+          <div>
+            <span class="kit-cat">Workflow</span>
+            <span class="kit-val">Narzędzia AI wspierające produkcję i postprodukcję</span>
           </div>
         </div>
       </section>
 
       <section>
-        <h2>Sprzęt</h2>
+        <h2>Sprzęt własny</h2>
         <div class="kit">
-          <div class="kit-row">
-            <span class="kit-cat">Kamera</span>
-            <span class="kit-val">Panasonic Lumix S5IIX</span>
+          <div>
+            <span class="kit-cat">Kamery</span>
+            <span class="kit-val">Panasonic Lumix S5IIX · Insta360 X4</span>
           </div>
-          <div class="kit-row">
-            <span class="kit-cat">Kamera 360°</span>
-            <span class="kit-val">Insta360 X4</span>
-          </div>
-          <div class="kit-row">
+          <div>
             <span class="kit-cat">Optyka</span>
             <span class="kit-val">Sigma 24-70 mm f/2.8 ART II</span>
           </div>
-          <div class="kit-row">
+          <div>
             <span class="kit-cat">Światło</span>
-            <span class="kit-val">Nanlite Forza 60B II · Pavotube II 30C × 2</span>
+            <span class="kit-val">Nanlite Forza 60B II · Nanlite Pavotube II 30C × 2</span>
           </div>
-          <div class="kit-row">
+          <div>
             <span class="kit-cat">Statyw</span>
             <span class="kit-val">Manfrotto</span>
           </div>
-          <div class="kit-row">
-            <span class="kit-cat">Postprodukcja</span>
-            <span class="kit-val">DaVinci Resolve Studio — montaż i color grading</span>
-          </div>
-          <div class="kit-row">
-            <span class="kit-cat">Workflow</span>
-            <span class="kit-val">Narzędzia AI wspierające produkcję</span>
-          </div>
         </div>
       </section>
 
       <section>
-        <h2>Mocne strony</h2>
+        <h2>Języki obce</h2>
+        <div class="lang">
+          <div><span>Polski</span><span class="lvl">ojczysty</span></div>
+          <div><span>Angielski</span><span class="lvl todo">uzupełnij poziom</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Umiejętności miękkie</h2>
         <ul class="plain">
-          <li>Elastyczność i szybkie reagowanie na to, co dzieje się na planie</li>
-          <li>Spokój i cierpliwość — praca z detalem w montażu</li>
-          <li>Samodzielność w całym procesie: od zdjęć po finalny color grading</li>
+          <li>Elastyczność i szybkie reagowanie na planie</li>
+          <li>Cierpliwość i dbałość o detal</li>
+          <li>Samodzielność w prowadzeniu projektu</li>
           <li>Swobodna praca z ludźmi przed kamerą</li>
-          <li>Ciekawość branżowych nowinek i szybkie wdrażanie nowych narzędzi</li>
+          <li>Szybkie wdrażanie nowych narzędzi</li>
         </ul>
       </section>
 
-      <section>
-        <h2>Edukacja</h2>
-        <div class="edu-item">
-          <p class="deg">Psychologia — studia w toku</p>
-          <p class="meta">Kierunek wybrany świadomie: praca z ludźmi i ich historiami jest częścią tego, jak podchodzę do bohaterów przed kamerą.</p>
-        </div>
-      </section>
+    </aside>
 
-    </div>
-
-    <!-- ── Prawa kolumna ─────────────────────────────── -->
-    <div class="col col-main">
+    <!-- ══ KOLUMNA GŁÓWNA ═══════════════════════════════ -->
+    <main class="col">
 
       <section>
-        <h2>Profil</h2>
+        <h2>Podsumowanie zawodowe</h2>
         <p class="body-txt">
-          Od siedmiu lat pracuję z kamerą, od sześciu przy montażu. Byłam po obu stronach
-          tej pracy — wiem, jak wygląda plan i wiem, jak wygląda montaż o drugiej w nocy.
-          Kiedy nagrywam, już myślę o tym, co z tego materiału powstanie. Kiedy montuję —
-          pamiętam, co czułam za kamerą.
+          Operator kamery i montażysta wideo z 7-letnim doświadczeniem przy zdjęciach
+          i 6-letnim w postprodukcji. Prowadzę projekty samodzielnie — od zdjęć na planie,
+          przez montaż, po finalny color grading w DaVinci Resolve Studio. Mam na koncie
+          ponad 200 zrealizowanych projektów: filmy i teledyski ślubne, podcasty, teledyski
+          muzyczne oraz krótkie formy pionowe.
         </p>
         <p class="body-txt">
-          Przewinęłam się przez najróżniejsze plany zdjęciowe i formaty — od kameralnych
-          realizacji po duże eventy i koncerty. Praca w tak różnych warunkach nauczyła mnie
-          przede wszystkim elastyczności i szybkiego reagowania na to, co dzieje się wokół.
-          Śledzę nowinki branżowe i chętnie sięgam po nowe narzędzia, w tym rozwiązania
-          oparte na AI, które pozwalają mi pracować sprawniej.
+          Praca po obu stronach procesu sprawia, że już podczas zdjęć myślę o montażu,
+          a montując pamiętam warunki planu. Śledzę nowinki branżowe i chętnie sięgam po
+          nowe narzędzia, w tym rozwiązania oparte na AI, które przyspieszają moją pracę.
         </p>
-
-        <div class="figures">
-          <div class="fig"><span class="n">200+</span><span class="l">Zrealizowanych projektów</span></div>
-          <div class="fig"><span class="n">250+</span><span class="l">Realizacji live</span></div>
-          <div class="fig"><span class="n">108</span><span class="l">Filmów w portfolio</span></div>
-        </div>
       </section>
 
       <section>
-        <h2>Obszary realizacji</h2>
-        <div class="areas">
+        <h2>Doświadczenie zawodowe</h2>
 
-          <div class="area">
-            <span class="cnt">31</span>
+        <div class="job">
+          <p class="job-dates"><span class="todo">rok rozpoczęcia</span> — obecnie</p>
+          <p class="job-title">Operator kamery i montażysta wideo</p>
+          <p class="job-org">Współpraca projektowa / freelance · Gliwice i woj. śląskie</p>
+          <ul class="duties">
+            <li>Zdjęcia jedno- i wielokamerowe na planach zdjęciowych</li>
+            <li>Przygotowanie planu zdjęciowego i praca ze światłem (Nanlite Forza, Pavotube)</li>
+            <li>Pełny montaż filmów, teledysków, odcinków podcastów i krótkich form pionowych</li>
+            <li>Color grading i finalizacja materiału w DaVinci Resolve Studio</li>
+            <li>Kontakt z klientem, ustalanie zakresu realizacji i terminów dostarczenia materiału</li>
+            <li>Ponad 200 zrealizowanych projektów w kilku formatach wideo</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Wybrane realizacje</h2>
+        <div>
+          <div class="proj">
+            <span class="yrs">2021–2025</span>
             <span>
               <span class="ttl">Podcasty i formaty mówione</span>
               <span class="sub">Zdjęcia wielokamerowe, montaż odcinków, formaty cykliczne</span>
             </span>
-            <span class="yrs">2021–2025</span>
+            <span class="cnt">31</span>
           </div>
-
-          <div class="area">
-            <span class="cnt">25</span>
-            <span>
-              <span class="ttl">Formaty pionowe i shorts</span>
-              <span class="sub">Krótkie formy pod social media, przemontaż materiału z realizacji</span>
-            </span>
-            <span class="yrs">—</span>
-          </div>
-
-          <div class="area">
-            <span class="cnt">18</span>
+          <div class="proj">
+            <span class="yrs">2022–2025</span>
             <span>
               <span class="ttl">Filmy i teledyski ślubne</span>
               <span class="sub">Pełne filmy oraz teledyski — zdjęcia, montaż, kolor</span>
             </span>
-            <span class="yrs">2022–2025</span>
+            <span class="cnt">18</span>
           </div>
-
-          <div class="area">
-            <span class="cnt">13</span>
+          <div class="proj">
+            <span class="yrs">2021–2026</span>
             <span>
               <span class="ttl">Teledyski i projekty muzyczne</span>
-              <span class="sub">Współpraca z artystami, realizacje koncertowe</span>
+              <span class="sub">Współpraca z artystami przy teledyskach i materiałach promocyjnych</span>
             </span>
-            <span class="yrs">2021–2026</span>
+            <span class="cnt">13</span>
           </div>
-
-          <div class="area">
-            <span class="cnt">9</span>
+          <div class="proj">
+            <span class="yrs">2022–2023</span>
             <span>
               <span class="ttl">Studniówki</span>
               <span class="sub">Filmy, teledyski i reportaże z wydarzenia</span>
             </span>
-            <span class="yrs">2022–2023</span>
+            <span class="cnt">9</span>
           </div>
-
-          <div class="area">
-            <span class="cnt">3</span>
+          <div class="proj">
+            <span class="yrs">na bieżąco</span>
             <span>
-              <span class="ttl">Reportaże i relacje z eventów</span>
-              <span class="sub">Relacje z wydarzeń, materiały dokumentalne</span>
+              <span class="ttl">Formaty pionowe i shorts</span>
+              <span class="sub">Krótkie formy pod social media, przemontaż materiału z realizacji</span>
             </span>
-            <span class="yrs">2021–2025</span>
+            <span class="cnt">25</span>
           </div>
-
         </div>
       </section>
 
       <section>
-        <h2>Zakres usług</h2>
-        <ul class="plain">
-          <li><strong style="font-weight:500">Zdjęcia</strong> — obsługa kamery na planie, praca ze światłem, realizacje jedno- i wielokamerowe</li>
-          <li><strong style="font-weight:500">Montaż</strong> — pełny montaż filmów, teledysków, odcinków i krótkich form</li>
-          <li><strong style="font-weight:500">Postprodukcja</strong> — color grading w DaVinci Resolve Studio, korekta i finalizacja materiału</li>
-          <li><strong style="font-weight:500">Eventy i live</strong> — realizacje wydarzeń, koncertów i imprez okolicznościowych</li>
-        </ul>
+        <h2>Wykształcenie</h2>
+        <div class="job">
+          <p class="job-dates"><span class="todo">lata studiów</span></p>
+          <p class="job-title">Psychologia — studia w toku</p>
+          <p class="job-org"><span class="todo">nazwa uczelni do uzupełnienia</span></p>
+        </div>
       </section>
 
-    </div>
+    </main>
   </div>
 
-  <footer class="foot">
-    <p class="clause">
-      Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w niniejszym dokumencie
-      do realizacji procesu rekrutacji zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych
-      osobowych (Dz. U. z 2018 r., poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego
-      i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO).
-    </p>
-    <span class="foot-tc">00:21:37</span>
-  </footer>
+  <p class="clause">
+    Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w niniejszym dokumencie
+    w celu przeprowadzenia procesu rekrutacji, zgodnie z art. 6 ust. 1 lit. a Rozporządzenia
+    Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony
+    osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu
+    takich danych (RODO).
+  </p>
 
 </div>
 
