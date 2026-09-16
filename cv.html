@@ -65,8 +65,8 @@ body {
 
 .blob {
   position: absolute;
-  left: 1.1rem; top: 0.9rem;
-  width: 7.4rem; height: 7.4rem;
+  left: 0.2rem; top: 0.2rem;
+  width: 6.4rem; height: 6.4rem;
   background: var(--blob);
   border-radius: 50%;
   z-index: 0;
@@ -84,46 +84,11 @@ body {
   text-transform: uppercase;
 }
 
-.who {
+.role {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 5.2rem 1fr;
-  align-items: center;
-  gap: 0.9rem;
-  margin-top: 0.3rem;
-}
-
-/* Podmiana zdjęcia: zamień <div class="avatar">…</div> na
-   <img class="avatar" src="public/cv-photo.jpg" alt="Laura Nowak" /> */
-.avatar {
-  width: 5.2rem; height: 5.2rem;
-  border-radius: 50%;
-  background: #E8E4E0;
-  border: 3px solid var(--paper);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  object-fit: cover;
-  object-position: center 20%;
-}
-.avatar .ini {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: var(--accent);
-  line-height: 1;
-}
-.avatar .hint {
-  font-size: 0.42rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 0.15rem;
-}
-
-.role {
+  display: block;
+  margin-top: 0.5rem;
   font-family: var(--font-head);
   font-weight: 600;
   font-size: 0.68rem;
@@ -250,24 +215,16 @@ ul.dots li::before {
 .tally .yr { font-size: 0.68rem; color: var(--muted); }
 
 /* Języki */
-.lang + .lang { margin-top: 0.55rem; }
-.lang-top {
+.langs { display: flex; flex-direction: column; gap: 0.3rem; }
+.langs div {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 0.6rem;
-  margin-bottom: 0.2rem;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--ink);
 }
-.lang-name { font-weight: 700; font-size: 0.8rem; color: var(--ink); }
-.lang-code { font-size: 0.78rem; color: var(--ink); font-variant-numeric: tabular-nums; }
-.segs { display: flex; gap: 3px; }
-.segs i { display: block; flex: 1; height: 7px; background: var(--seg); }
-.segs i.on { background: var(--accent); }
-.lang-desc { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
-
-/* Certyfikaty */
-.cert { font-size: 0.79rem; color: var(--body); }
-.cert strong { color: var(--ink); font-weight: 700; }
+.langs .lvl { color: var(--muted); font-size: 0.76rem; }
 
 .todo { color: var(--accent); font-style: italic; border-bottom: 1px dashed var(--accent); }
 
@@ -319,13 +276,7 @@ ul.dots li::before {
     <div class="ident">
       <span class="blob"></span>
       <h1 class="name">Laura<br>Nowak</h1>
-      <div class="who">
-        <div class="avatar">
-          <span class="ini">LN</span>
-          <span class="hint">zdjęcie</span>
-        </div>
-        <p class="role">Operator kamery &nbsp;·&nbsp; Montażysta wideo</p>
-      </div>
+      <p class="role">Operator kamery &nbsp;·&nbsp; Montażysta wideo</p>
     </div>
 
     <div class="contact">
@@ -333,9 +284,6 @@ ul.dots li::before {
       <ul>
         <li><a href="mailto:laura.nowak.kontakt@gmail.com">laura.nowak.kontakt@gmail.com</a></li>
         <li>790 770 494</li>
-        <li>ul. Szarych Szeregów 6c/12</li>
-        <li>44-194 Knurów</li>
-        <li><a href="https://lauranowakkontakt-creator.github.io/Portfolio/">portfolio online</a></li>
       </ul>
     </div>
   </header>
@@ -365,7 +313,6 @@ ul.dots li::before {
         <div class="entry">
           <p class="entry-date"><span class="todo">rok rozpoczęcia</span> – obecnie</p>
           <p class="entry-title">Operator kamery i montażysta wideo</p>
-          <p class="entry-org">Knurów, woj. śląskie</p>
           <ul class="dots">
             <li>Zdjęcia jedno- i wielokamerowe na planach zdjęciowych.</li>
             <li>Przygotowanie planu zdjęciowego i praca ze światłem.</li>
@@ -376,6 +323,12 @@ ul.dots li::before {
         </div>
 
         <div class="entry">
+          <p class="entry-date">2021</p>
+          <p class="entry-title">Operator kamery</p>
+          <p class="entry-org">Visual Art</p>
+        </div>
+
+        <div class="entry">
           <p class="entry-date">2020.04 – 2020.05</p>
           <p class="entry-title">Wolontariat</p>
           <p class="entry-org">Centrum Chrześcijańskie Winnica, Rybnik</p>
@@ -383,27 +336,28 @@ ul.dots li::before {
       </section>
 
       <section>
-        <p class="sec-h">Wybrane realizacje</p>
+        <p class="sec-h">Realizacje</p>
         <div class="tally">
-          <div><span>Podcasty i formaty mówione <span class="yr">2021–2025</span></span><span class="n">31</span></div>
-          <div><span>Formaty pionowe i shorts <span class="yr">na bieżąco</span></span><span class="n">25</span></div>
-          <div><span>Filmy i teledyski ślubne <span class="yr">2022–2025</span></span><span class="n">18</span></div>
-          <div><span>Teledyski i projekty muzyczne <span class="yr">2021–2026</span></span><span class="n">13</span></div>
-          <div><span>Studniówki <span class="yr">2022–2023</span></span><span class="n">9</span></div>
+          <div><span>Podcasty i formaty mówione</span><span class="yr">2021–2025</span></div>
+          <div><span>Filmy i teledyski ślubne</span><span class="yr">2022–2025</span></div>
+          <div><span>Teledyski i projekty muzyczne</span><span class="yr">2021–2026</span></div>
+          <div><span>Studniówki</span><span class="yr">2022–2023</span></div>
+          <div><span>Formaty pionowe i shorts</span><span class="yr">na bieżąco</span></div>
         </div>
       </section>
 
       <section>
         <p class="sec-h">Wykształcenie</p>
+
         <div class="entry">
-          <p class="entry-date"><span class="todo">rok rozpoczęcia</span> – obecnie</p>
-          <p class="entry-title">Psychologia — studia w toku</p>
+          <p class="entry-date">2023.10 – 2027.02 &nbsp;·&nbsp; w toku</p>
+          <p class="entry-title">Psychologia</p>
           <p class="entry-org">Akademia Humanitas, Sosnowiec</p>
         </div>
 
         <div class="entry">
-          <p class="entry-date"><span class="todo">lata nauki</span></p>
-          <p class="entry-title">Wykształcenie średnie — matura</p>
+          <p class="entry-date">2021 – 2022</p>
+          <p class="entry-title">Wykształcenie średnie — matura 2022</p>
           <p class="entry-org">Niepubliczne Liceum Ogólnokształcące Maranatha, Knurów</p>
         </div>
       </section>
@@ -432,6 +386,7 @@ ul.dots li::before {
           <li>Samodzielne prowadzenie projektu</li>
           <li>Swobodna praca z ludźmi przed kamerą</li>
           <li>Elastyczność i szybkie reagowanie</li>
+          <li>Prawo jazdy kat. AM, B, B1</li>
         </ul>
       </section>
 
@@ -449,22 +404,10 @@ ul.dots li::before {
 
       <section>
         <p class="sec-h">Języki obce</p>
-
-        <div class="lang">
-          <div class="lang-top"><span class="lang-name">Polski</span><span class="lang-code">ojczysty</span></div>
-          <div class="segs"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+        <div class="langs">
+          <div><span>Polski</span><span class="lvl">ojczysty</span></div>
+          <div><span>Angielski</span><span class="lvl">B2 — wyższy średnio zaawansowany</span></div>
         </div>
-
-        <div class="lang">
-          <div class="lang-top"><span class="lang-name">Angielski</span><span class="lang-code">B2</span></div>
-          <div class="segs"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
-          <p class="lang-desc">Wyższy średnio zaawansowany</p>
-        </div>
-      </section>
-
-      <section>
-        <p class="sec-h">Zainteresowania</p>
-        <p class="cert">Filmowanie, gry logiczne, turystyka górska</p>
       </section>
 
     </div>
